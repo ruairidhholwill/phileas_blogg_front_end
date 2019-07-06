@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import ReviewList from "../Components/ReviewList"
+import ReviewForm from "../Components/ReviewForm"
 
 
 class ReviewBox extends Component{
@@ -23,11 +24,20 @@ class ReviewBox extends Component{
       ]
     };
 
+      this.handleReviewSubmit = this.handleReviewSubmit.bind(this);
+    }
+    handleReviewSubmit(submittedReview){
+      submittedReview.id = Date.now();
+      const updatedReviews = [...this.state.data, submittedReview];
+      this.setState({data: updatedReviews})
+
   }
 
   render(){
     return(
       <div className="comment-box">
+        <h2>Add Review</h2>
+        <ReviewForm onReviewSubmit= {this.handleReviewSubmit}/>
         <h2>Reviews</h2>
         <ReviewList data={this.state.data}/>
       </div>

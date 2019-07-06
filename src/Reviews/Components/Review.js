@@ -5,10 +5,10 @@ render(){
     return(
       <div className="review">
 
-      <h4>{this.props.title}</h4>
-      <p>{this.props.text}</p>
-      <p>{this.props.rating}</p>
-      <p>{this.props.date}</p>
+      <h4>Title: {this.props.title}</h4>
+      <p>Text: {this.props.text}</p>
+      <p>Rating: {this.props.rating}</p>
+      <p>Date: {this.props.date}</p>
       </div>
     );
   }
