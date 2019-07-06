@@ -1,11 +1,10 @@
 import React, {Fragment} from 'react';
+import CityContainer from './Cities/Container/CityContainer.js'
 import './App.css';
 
 function App() {
   return (
-    <Fragment>
-      Hello World!
-    </Fragment>
+    <CityContainer/>
   );
 }
 
