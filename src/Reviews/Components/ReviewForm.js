@@ -24,7 +24,7 @@ class ReviewForm extends Component{
     handleSubmit(event){
       event.preventDefault();
       const title = this.state.title.trim();
-      const rating = this.state.rating.trim();
+      const rating = this.state.rating;
       const date = this.state.date.trim();
       const text = this.state.text.trim();
 
@@ -42,6 +42,7 @@ class ReviewForm extends Component{
 
   handleRatingChange(event){
     this.setState({rating: event.target.value})
+
   }
 
   handleDateChange(event){
@@ -56,7 +57,13 @@ render(){
   return(
     <form className="review-form" onSubmit={this.handleSubmit}>
     <input type="text" placeholder="Write title" value={this.state.title} onChange={this.handleTitleChange}/>
-    <input type="number" min="1" max="5" value={this.state.rating} onChange={this.handleRatingChange}/>
+      <div onChange={this.handleRatingChange}>
+          <input type="radio" name="rating" value = '1' />
+          <input type="radio" name="rating" value = '2' />
+          <input type="radio" name="rating" value = '3' />
+          <input type="radio" name="rating" value = '4' />
+          <input type="radio" name="rating" value = '5' />
+      </div>
     <input type="date" value={this.state.date} onChange={this.handleDateChange}/>
     <textarea placeholder="Write review" value={this.state.text} onChange={this.handleTextChange}></textarea>
     <input type="submit" value="Write Review"/>
