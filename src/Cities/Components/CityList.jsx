@@ -1,4 +1,5 @@
 import React from 'react';
+import './CityList.css'
 import CityItem from './CityItem';
 
 const CityList = (props) => {
@@ -6,7 +7,7 @@ const CityList = (props) => {
         return <p>Loading...</p>
     }
     return (
-        <ul>
+        <ul className="city-list">
             {props.cities.map((city, index) => {
             return (
                 <CityItem
@@ -15,7 +16,7 @@ const CityList = (props) => {
                     country={city.name}
                     city={city.capital}
                 />
-      )
+            )
     })}
         </ul>
     )
