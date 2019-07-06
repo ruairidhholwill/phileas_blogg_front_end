@@ -6,8 +6,8 @@ class CityItem extends Component {
 
         return (
             <li className="city">
+                <h3>{this.props.city}</h3>
                 <h4>{this.props.country}</h4>
-                <h4>{this.props.city}</h4>
             </li>
         )
     }
