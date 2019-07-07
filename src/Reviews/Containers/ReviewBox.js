@@ -10,6 +10,7 @@ class ReviewBox extends Component {
     this.state = {
       countries: [],
       reviews: [],
+      reviewedCountries: []
     };
     this.postData = this.postData.bind(this)
   }
@@ -29,16 +30,22 @@ class ReviewBox extends Component {
   }
 
   postData(data) {
-    // const countryData = this.state.countries[data.country]
-    // fetch('http://localhost:8080/countries', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Accept': 'application/json',
-    //     'Content-Type': 'application/json'
-    //   },
-    //   body: JSON.stringify(countryData.name)
-    // })
-    //   .then(res => res.json())
+    console.log(this.state.reviewedCountries)
+    if (this.state.reviewedCountries.indexOf(data.country) < 0) {
+    // if (this.prevState.reviewedCountries.includes(data.country)) {
+    fetch('http://localhost:8080/countries', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data.country)
+    })
+      .then(res => res.json())
+      .then(reviewedCountry => this.setState(prevState => {
+        return {reviewedCountries: [...prevState.reviewedCountries, reviewedCountry.name]}
+      }))
+    }
 
     fetch('http://localhost:8080/reviews', {
       method: 'POST',
