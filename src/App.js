@@ -7,10 +7,7 @@ import Main from "./Navigation/Main";
 class App extends Component{
   render(){
     return  (
-      <Fragment>
         <Main/>
-        <CountryContainer/>
-      </Fragment>
     )
 }
 

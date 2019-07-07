@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import CountryContainer from '../../Countries/Containers/CountryContainer'
 
 class ReviewForm extends Component{
 
@@ -9,13 +8,15 @@ class ReviewForm extends Component{
       title: '',
       rating:'',
       date:'',
-      text:''
+      text:'',
+      country: ''
     };
 
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleRatingChange = this.handleRatingChange.bind(this);
     this.handleDateChange = this.handleDateChange.bind(this);
     this.handleTextChange = this.handleTextChange.bind(this);
+    this.handleSelectChange = this.handleSelectChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.generateOptions = this.generateOptions.bind(this);
 
@@ -29,13 +30,14 @@ class ReviewForm extends Component{
       const rating = this.state.rating;
       const date = this.state.date.trim();
       const text = this.state.text.trim();
+      const country = this.state.country
 
-      if (!title || !rating || !date || !text){
+      if (!title || !rating || !date || !text || !country){
         return
       }
 
-      this.props.onReviewSubmit({title: title, rating: rating, date: date, text: text})
-      this.setState({title: '', rating: '', date: '', text: ''});
+      this.props.onReviewSubmit({title: title, rating: rating, date: date, text: text, country: country})
+      this.setState({title: '', rating: '', date: '', text: '', country: ''});
   }
 
   handleTitleChange(event){
@@ -55,6 +57,10 @@ class ReviewForm extends Component{
     this.setState({text: event.target.value})
   }
 
+  handleSelectChange(event){
+    this.setState({country: event.target.value})
+  }
+
   generateOptions(){
     const options = this.props.countries.map((country, index) => {
       return <option value={index} key={index}>{country.name}</option>
@@ -67,7 +73,7 @@ class ReviewForm extends Component{
 render(){
   return(
     <form className="review-form" onSubmit={this.handleSubmit}>
-    <select  id="country-selector" defaultValue="default">
+    <select  id="country-selector" defaultValue="default" onChange={this.handleSelectChange}>
     <option disabled value="default">Choose a country...</option>
     {this.generateOptions()}
     </select>

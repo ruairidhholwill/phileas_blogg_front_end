@@ -9,6 +9,7 @@ render(){
       <p>Text: {this.props.text}</p>
       <p>Rating: {this.props.rating}</p>
       <p>Date: {this.props.date}</p>
+      <p>Country: {this.props.country}</p>
       </div>
     );
   }
