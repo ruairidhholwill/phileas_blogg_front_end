@@ -34,6 +34,7 @@ class ReviewBox extends Component {
       .then(reviewData => this.setState(prevState => {
         return {reviews: [...prevState.reviews, reviewData]}
       }))
+      
   }
 
   render() {
