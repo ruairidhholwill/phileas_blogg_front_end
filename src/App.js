@@ -1,11 +1,21 @@
-import React, {Component} from 'react';
+import React,{Component} from 'react';
+import CityContainer from './Cities/Containers/CityContainer.js'
 import './App.css';
-import ReviewBox from "./Reviews/Containers/ReviewBox";
+import Main from "./Navigation/Main";
+
 
 class App extends Component{
   render(){
-    return <ReviewBox/>
-  }
+    return  (
+      <Main/>
+    )
 }
+
+
+
+}
+
+
+
 
 export default App;

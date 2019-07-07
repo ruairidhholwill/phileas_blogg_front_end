@@ -57,7 +57,7 @@ render(){
   return(
     <form className="review-form" onSubmit={this.handleSubmit}>
     <input type="text" placeholder="Write title" value={this.state.title} onChange={this.handleTitleChange}/>
-      <div onChange={this.handleRatingChange}>
+      <div class="rating-stars" onChange={this.handleRatingChange}>
           <input type="radio" name="rating" value = '1' />
           <input type="radio" name="rating" value = '2' />
           <input type="radio" name="rating" value = '3' />
