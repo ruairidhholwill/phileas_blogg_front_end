@@ -10,6 +10,7 @@ class ReviewBox extends Component {
     this.state = {
       reviews: []
     };
+    this.postData = this.postData.bind(this)
   }
 
   componentDidMount() {
@@ -30,13 +31,16 @@ class ReviewBox extends Component {
       body: JSON.stringify(data)
     })
       .then(res => res.json())
+      .then(reviewData => this.setState(prevState => {
+        return {reviews: [...prevState.reviews, reviewData]}
+      }))
   }
 
   render() {
     return (
       <div className="comment-box">
         <h2>Add Review</h2>
-        <ReviewForm onReviewSubmit={this.postData} />
+        <ReviewForm onReviewSubmit={this.postData}/>
         <h2>Reviews</h2>
         <ReviewList data={this.state.reviews} />
       </div>
