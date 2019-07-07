@@ -10,20 +10,37 @@ class UserBox extends Component {
         this.state = {
             users: []
         }
-
-        this.handleUserFormSubmit = this.handleUserFormSubmit.bind(this);
+        this.postData = this.postData.bind(this)
     }
 
-    handleUserFormSubmit(newUser) {
-        const updatedUsers = [...this.state.users, newUser];
-        this.setState({users: updatedUsers});
-    }
+    componentDidMount() {
+        const url = "http://localhost:8080/users"
+        fetch(url)
+          .then(res => res.json())
+          .then(userData => this.setState({ users: userData._embedded.users }))
+          .catch(err => console.err)
+      }
+
+      postData(data) {
+        return fetch('http://localhost:8080/users', {
+          method: 'POST',
+          headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        })
+          .then(res => res.json())
+          .then(userData => this.setState(prevState => {
+            return {users: [...prevState.users, userData]}
+          }))
+      }
 
     render() {
         return (
             <main>
                 <h2>Register new Account</h2>
-                <UserForm onFormSubmit={this.handleUserFormSubmit}/>
+                <UserForm onFormSubmit={this.postData}/>
                 <h2>Registered Users:</h2>
                 <UserList users={this.state.users}/>
             </main>
