@@ -1,12 +1,12 @@
 import React, {Component} from 'react'
-import './CityItem.css'
+import './CountryItem.css'
 
-class CityItem extends Component {
+class CountryItem extends Component {
 
     render(){
 
         return (
-            <li className="city-item">
+            <li className="country-item">
                 <h2>{this.props.city}</h2>
                 <h4>{this.props.country}</h4>
             </li>
@@ -17,4 +17,4 @@ class CityItem extends Component {
 
 
 
-export default CityItem;
+export default CountryItem;
