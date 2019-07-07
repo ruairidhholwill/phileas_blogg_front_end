@@ -15,14 +15,14 @@ class ReviewBox extends Component {
   }
 
   componentDidMount() {
-    let url1 = "http://localhost:8080/reviews"
-    fetch(url1)
+    let reviewsUrl = "http://localhost:8080/reviews"
+    fetch(reviewsUrl)
       .then(res => res.json())
       .then(reviewData => this.setState({ reviews: reviewData._embedded.reviews }))
       .catch(err => console.err)
 
-    let url2 = 'https://restcountries.eu/rest/v2/all?fields=name'
-    fetch(url2)
+    let countriesUrl = 'https://restcountries.eu/rest/v2/all?fields=name'
+    fetch(countriesUrl)
       .then(res => res.json())
       .then(countries => this.setState({countries: countries}))
       .catch(err => console.error)
