@@ -20,7 +20,6 @@ class ReviewBox extends Component {
       .catch(err => console.err)
   }
 
-
   postData(data) {
     return fetch('http://localhost:8080/reviews', {
       method: 'POST',
