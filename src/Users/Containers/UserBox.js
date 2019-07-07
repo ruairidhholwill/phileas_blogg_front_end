@@ -10,6 +10,8 @@ class UserBox extends Component {
         this.state = {
             users: []
         }
+
+        this.handleUserFormSubmit = this.handleUserFormSubmit.bind(this);
     }
 
     handleUserFormSubmit(newUser) {

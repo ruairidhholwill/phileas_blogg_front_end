@@ -7,7 +7,8 @@ class UserForm extends Component {
         super(props)
         this.state = {
             username:'',
-            name: ''
+            name: '',
+            level: 0
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -20,10 +21,11 @@ class UserForm extends Component {
         event.preventDefault();
         const username = this.state.username.trim();
         const name = this.state.name.trim();
+        const level = this.state.level;
         if (!username || !name) {
             return
         }
-        this.props.onFormSubmit({username: username, name: name});
+        this.props.onFormSubmit({username: username, name: name, level: level});
         this.setState({username: '', name: ''})
     }
 
