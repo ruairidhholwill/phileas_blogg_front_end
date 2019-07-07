@@ -58,12 +58,13 @@ class ReviewForm extends Component{
   }
 
   handleSelectChange(event){
+    console.log(event.target)
     this.setState({country: event.target.value})
   }
 
   generateOptions(){
     const options = this.props.countries.map((country, index) => {
-      return <option value={index} key={index}>{country.name}</option>
+      return <option value={country.name} key={index}>{country.name}</option>
     })
     return options
   }

@@ -29,6 +29,16 @@ class ReviewBox extends Component {
   }
 
   postData(data) {
+    // const countryData = this.state.countries[data.country]
+    // fetch('http://localhost:8080/countries', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Accept': 'application/json',
+    //     'Content-Type': 'application/json'
+    //   },
+    //   body: JSON.stringify(countryData.name)
+    // })
+    //   .then(res => res.json())
 
     fetch('http://localhost:8080/reviews', {
       method: 'POST',
