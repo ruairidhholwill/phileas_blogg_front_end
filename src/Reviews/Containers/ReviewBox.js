@@ -1,33 +1,27 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import ReviewList from "../Components/ReviewList"
 import ReviewForm from "../Components/ReviewForm"
 
 
-class ReviewBox extends Component{
+class ReviewBox extends Component {
 
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      data:[
-        { id: 1,
-          title: "Awesome city",
-          text: "That was amazing experience",
-          rating: 4,
-          date: "2019-05-27"
-        },
-        { id: 2,
-          title: "Super Awesome city",
-          text: "That was awesome trip.",
-          rating: 5,
-          date: "2019-02-01"
-        }
-      ]
+      reviews: []
     };
-    }
+  }
 
-   
+  componentDidMount() {
+    const url = "http://localhost:8080/reviews"
+    fetch(url)
+      .then(res => res.json())
+      .then(reviewData => this.setState({ reviews: reviewData._embedded.reviews }))
+      .catch(err => console.err)
+  }
 
-  postData(data){
+
+  postData(data) {
     return fetch('http://localhost:8080/reviews', {
       method: 'POST',
       headers: {
@@ -36,16 +30,16 @@ class ReviewBox extends Component{
       },
       body: JSON.stringify(data)
     })
-    .then(res => res.json())
+      .then(res => res.json())
   }
 
-  render(){
-    return(
+  render() {
+    return (
       <div className="comment-box">
         <h2>Add Review</h2>
-        <ReviewForm onReviewSubmit={this.postData}/>
+        <ReviewForm onReviewSubmit={this.postData} />
         <h2>Reviews</h2>
-        <ReviewList data={this.state.data}/>
+        <ReviewList data={this.state.reviews} />
       </div>
     )
   }
