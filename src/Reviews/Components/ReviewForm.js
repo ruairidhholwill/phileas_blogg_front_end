@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import CountryContainer from '../../Countries/Containers/CountryContainer'
 
 class ReviewForm extends Component{
 
@@ -16,6 +17,7 @@ class ReviewForm extends Component{
     this.handleDateChange = this.handleDateChange.bind(this);
     this.handleTextChange = this.handleTextChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.generateOptions = this.generateOptions.bind(this);
 
 
 
@@ -53,9 +55,22 @@ class ReviewForm extends Component{
     this.setState({text: event.target.value})
   }
 
+  generateOptions(){
+    const options = this.props.countries.map((country, index) => {
+      return <option value={index} key={index}>{country.name}</option>
+    })
+    return options
+  }
+
+
+
 render(){
   return(
     <form className="review-form" onSubmit={this.handleSubmit}>
+    <select  id="country-selector" defaultValue="default">
+    <option disabled value="default">Choose a country...</option>
+    {this.generateOptions()}
+    </select>
     <input type="text" placeholder="Write title" value={this.state.title} onChange={this.handleTitleChange}/>
       <div class="rating-stars" onChange={this.handleRatingChange}>
           <input type="radio" name="rating" value = '1' />

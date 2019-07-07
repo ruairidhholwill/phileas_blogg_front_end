@@ -8,17 +8,24 @@ class ReviewBox extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      countries: [],
       reviews: []
     };
     this.postData = this.postData.bind(this)
   }
 
   componentDidMount() {
-    const url = "http://localhost:8080/reviews"
-    fetch(url)
+    let url1 = "http://localhost:8080/reviews"
+    fetch(url1)
       .then(res => res.json())
       .then(reviewData => this.setState({ reviews: reviewData._embedded.reviews }))
       .catch(err => console.err)
+
+    let url2 = 'https://restcountries.eu/rest/v2/all?fields=name'
+    fetch(url2)
+      .then(res => res.json())
+      .then(countries => this.setState({countries: countries}))
+      .catch(err => console.error)
   }
 
   postData(data) {
@@ -40,7 +47,7 @@ class ReviewBox extends Component {
     return (
       <div className="comment-box">
         <h2>Add Review</h2>
-        <ReviewForm onReviewSubmit={this.postData}/>
+        <ReviewForm onReviewSubmit={this.postData} countries={this.state.countries}/>
         <h2>Reviews</h2>
         <ReviewList data={this.state.reviews} />
       </div>

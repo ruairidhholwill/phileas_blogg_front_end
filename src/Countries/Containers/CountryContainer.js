@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CountryList from '../Components/CountryList.js';
+import ReviewForm from '../../Reviews/Components/ReviewForm.js';
 
 class CountryContainer extends Component {
     constructor(props) {
@@ -21,6 +22,7 @@ class CountryContainer extends Component {
     render(){
         return (
             <main>
+                <ReviewForm countries={this.state.countries}/>
                 <CountryList countries={this.state.countries}/>
             </main>
         )
