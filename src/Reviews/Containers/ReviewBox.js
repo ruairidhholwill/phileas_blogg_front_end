@@ -23,21 +23,27 @@ class ReviewBox extends Component{
         }
       ]
     };
-
-      this.handleReviewSubmit = this.handleReviewSubmit.bind(this);
     }
-    handleReviewSubmit(submittedReview){
-      submittedReview.id = Date.now();
-      const updatedReviews = [...this.state.data, submittedReview];
-      this.setState({data: updatedReviews})
 
+   
+
+  postData(data){
+    return fetch('http://localhost:8080/reviews', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then(res => res.json())
   }
 
   render(){
     return(
       <div className="comment-box">
         <h2>Add Review</h2>
-        <ReviewForm onReviewSubmit= {this.handleReviewSubmit}/>
+        <ReviewForm onReviewSubmit={this.postData}/>
         <h2>Reviews</h2>
         <ReviewList data={this.state.data}/>
       </div>
