@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CityList from '../Components/CityList.jsx';
+import CityList from '../Components/CityList.js';
 
 class CityContainer extends Component {
     constructor(props) {
@@ -16,7 +16,7 @@ class CityContainer extends Component {
           .then(cities => this.setState({cities: cities}))
           .catch(err => console.error)
     }
-    
+
 
     render(){
         return (
@@ -25,7 +25,7 @@ class CityContainer extends Component {
             </main>
         )
     }
-    
+
 }
 
 export default CityContainer

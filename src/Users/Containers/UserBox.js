@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
-import UserForm from '../Components/UserForm.jsx'
-import UserList from '../Components/UserList.jsx'
+import UserForm from '../Components/UserForm.js'
+import UserList from '../Components/UserList.js'
 
 
 class UserBox extends Component {
@@ -35,4 +35,3 @@ class UserBox extends Component {
 
 
 export default UserBox;
-
