@@ -14,14 +14,15 @@ class UserBox extends Component {
     }
 
     componentDidMount() {
-        const url = "http://localhost:8080/users"
+        const url = "http://localhost:8080/users/all"
         fetch(url)
           .then(res => res.json())
-          .then(userData => this.setState({ users: userData._embedded.users }))
+          .then(userData => this.setState({ users: userData }))
           .catch(err => console.err)
       }
 
       postData(data) {
+        console.log(data)
         return fetch('http://localhost:8080/users', {
           method: 'POST',
           headers: {

@@ -14,10 +14,10 @@ class ReviewBox extends Component {
     }
   
     componentDidMount() {
-      let reviewsUrl = "http://localhost:8080/reviews"
+      let reviewsUrl = "http://localhost:8080/reviews/all"
       fetch(reviewsUrl)
         .then(res => res.json())
-        .then(reviewData => this.setState({ reviews: reviewData._embedded.reviews }))
+        .then(reviewData => this.setState({ reviews: reviewData }))
         .catch(err => console.err)
   
       let countriesUrl = 'https://restcountries.eu/rest/v2/all?fields=name'
@@ -29,7 +29,7 @@ class ReviewBox extends Component {
       let reviewedCountriesUrl = 'http://localhost:8080/countries'
       fetch(reviewedCountriesUrl)
         .then(res => res.json())
-        .then(reviewedCountry => this.setState({ reviewedCountries: reviewedCountry._embedded.countries }))
+        .then(reviewedCountry => this.setState({ reviewedCountries: reviewedCountry }))
         .catch(err => console.error)
     }
   
