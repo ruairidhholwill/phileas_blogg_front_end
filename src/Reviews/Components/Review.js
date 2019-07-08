@@ -9,7 +9,7 @@ class Review extends Component{
 render(){
     console.log(this.props.id)
     return(
-      <Link to={"/review/" + this.props.id}>
+      <a href={"/review/" + this.props.id}>
         <div className="review">
           <h4>Title: {this.props.title}</h4>
           <p>Text: {this.props.text}</p>
@@ -17,7 +17,7 @@ render(){
           <p>Date: {this.props.date}</p>
           <p>Country: {this.props.country}</p>
         </div>
-    </Link>
+    </a>
     );
   }
 }
