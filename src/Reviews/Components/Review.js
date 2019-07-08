@@ -7,15 +7,17 @@ class Review extends Component{
 
 
 render(){
+    console.log(this.props.id)
     return(
-      <div className="review">
-
-      <h4><Link to="/review/{id}">Title: {this.props.title}</Link></h4>
-      <p>Text: {this.props.text}</p>
-      <p>Rating: {this.props.rating}</p>
-      <p>Date: {this.props.date}</p>
-      <p>Country: {this.props.country}</p>
-      </div>
+      <Link to={"/review/" + this.props.id}>
+        <div className="review">
+          <h4>Title: {this.props.title}</h4>
+          <p>Text: {this.props.text}</p>
+          <p>Rating: {this.props.rating}</p>
+          <p>Date: {this.props.date}</p>
+          <p>Country: {this.props.country}</p>
+        </div>
+    </Link>
     );
   }
 }
