@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReviewList from "../Components/ReviewList"
 import ReviewForm from "../Components/ReviewForm"
 
 class ReviewFormBox extends Component {

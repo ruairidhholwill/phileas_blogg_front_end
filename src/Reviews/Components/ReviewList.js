@@ -1,22 +1,22 @@
 import React, { Component } from "react";
 import Review from "./Review";
 
-class ReviewList extends Component{
- render(){
-    const reviewNodes = this.props.data.map(review =>{
-      return(
-          <Review date={review.date} rating={review.rating} title={review.title} key={review.id} text={review.text} country={review.country}></Review>
+class ReviewList extends Component {
+  render() {
+    const reviewNodes = this.props.data.map((review, index) => {
+      return (
+        <Review date={review.date} rating={review.rating} title={review.title} key={review.id} value={index} text={review.text} country={review.country}></Review>
 
       );
     })
 
-    return(
+    return (
       <div className="review-list">
         {reviewNodes}
       </div>
     )
 
-}
+  }
 }
 
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import EditAndDeleteReview from "../Components/EditAndDeleteReview"
+import Review from '../Components/Review'
 
-class EditReviewBox extends Component {
+class ReviewBox extends Component {
 
     constructor(props) {
       super(props);
@@ -52,7 +52,7 @@ class EditReviewBox extends Component {
       }
   
       fetch('http://localhost:8080/reviews', {
-        method: 'POST',
+        method: 'GET',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
@@ -69,13 +69,12 @@ class EditReviewBox extends Component {
   
     render() {
       return (
-        <div className="comment-box">
-          <h2>Add Review</h2>
-          <ReviewForm onReviewSubmit={this.postData} countries={this.state.countries} />
+        <div className="review-box">
+            <Review/>
         </div>
       )
     }
   
   }
   
-  export default EditAndDeleteReview;
+  export default ReviewBox;
