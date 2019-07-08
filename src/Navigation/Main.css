@@ -18,3 +18,10 @@
 li a {
     text-decoration: none;
 }
+
+.home-nav-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    list-style-type: none;
+}
