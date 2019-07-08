@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from "react";
 import Home from "./Home";
 import NavBar from "./NavBar";
+import './Main.css'
 import UserBox from "../Users/Containers/UserBox"
 import ReviewBox from "../Reviews/Containers/ReviewBox"
 import CountryContainer from "../Countries/Containers/CountryContainer"
@@ -10,7 +11,8 @@ class Main extends Component{
 
   render(){
     return(<Router>
-        <Fragment>
+        <main className="layout">
+          <img id="logo" src="/images/balloon.png"></img>
           <NavBar/>
           <Switch>
               <Route exact path="/" component={Home}/>
@@ -18,7 +20,7 @@ class Main extends Component{
               <Route path="/countries" component={CountryContainer}/>
               <Route path="/add-review" component={ReviewBox}/>
           </Switch>
-        </Fragment>
+        </main>
     </Router>
   )
   }

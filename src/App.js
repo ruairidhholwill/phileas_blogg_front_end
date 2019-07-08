@@ -6,7 +6,8 @@ import Main from "./Navigation/Main";
 class App extends Component{
   render(){
     return  (
-        <Main/>
+          <Main/>
+        
     )
 }
 
