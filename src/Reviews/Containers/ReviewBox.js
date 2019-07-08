@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import ReviewList from "../Components/ReviewList"
-import ReviewForm from "../Components/ReviewForm"
 
 
 class ReviewBox extends Component {
@@ -15,10 +14,10 @@ class ReviewBox extends Component {
   }
 
   componentDidMount() {
-    let reviewsUrl = "http://localhost:8080/reviews"
+    let reviewsUrl = "http://localhost:8080/reviews/all"
     fetch(reviewsUrl)
       .then(res => res.json())
-      .then(reviewData => this.setState({ reviews: reviewData._embedded.reviews }))
+      .then(reviewData => this.setState({ reviews: reviewData }))
       .catch(err => console.err)
 
     let countriesUrl = 'https://restcountries.eu/rest/v2/all?fields=name'
