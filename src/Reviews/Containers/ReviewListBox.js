@@ -3,7 +3,7 @@ import ReviewList from "../Components/ReviewList"
 import ReviewForm from "../Components/ReviewForm"
 
 
-class ReviewBox extends Component {
+class ReviewListBox extends Component {
 
   constructor(props) {
     super(props);
@@ -12,7 +12,6 @@ class ReviewBox extends Component {
       reviews: [],
       reviewedCountries: []
     };
-    this.postData = this.postData.bind(this)
   }
 
   componentDidMount() {
@@ -35,45 +34,16 @@ class ReviewBox extends Component {
       .catch(err => console.error)
   }
 
-  postData(data) {
-    const countries = this.state.reviewedCountries.map(country => country.name)
-    if (countries.includes(data.country) === false) {
+  
 
-      fetch('http://localhost:8080/countries', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data.country)
-      })
-        .then(res => res.json())
-        .then(reviewedCountry => this.setState(prevState => {
-          return { reviewedCountries: [...prevState.reviewedCountries, reviewedCountry] }
-        }))
-    }
-
-    fetch('http://localhost:8080/reviews', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-      .then(res => res.json())
-      .then(reviewData => this.setState(prevState => {
-        return { reviews: [...prevState.reviews, reviewData] }
-      }))
-
-  }
+  
   
 
   render() {
     return (
       <div className="comment-box">
-        <h2>Add Review</h2>
-        <ReviewForm onReviewSubmit={this.postData} countries={this.state.countries} />
+        {/* <h2>Add Review</h2>
+        <ReviewForm onReviewSubmit={this.postData} countries={this.state.countries} /> */}
         <h2>Reviews</h2>
         <ReviewList data={this.state.reviews} />
       </div>
@@ -82,4 +52,4 @@ class ReviewBox extends Component {
 
 }
 
-export default ReviewBox;
+export default ReviewListBox;
