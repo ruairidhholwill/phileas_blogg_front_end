@@ -5,6 +5,7 @@ import './Main.css'
 const HomeNavBar = () =>(
   <ul className="home-nav-bar">
     <li><Link className="nav-link" to="/users">Users</Link></li>
+    <li><Link className="nav-link" to="/reviews">Reviews</Link></li>
     <li><Link className="nav-link" to="/countries">Countries</Link></li>
   </ul>
 )
