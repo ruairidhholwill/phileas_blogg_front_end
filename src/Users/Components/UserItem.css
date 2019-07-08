@@ -1,10 +1,21 @@
 .user-item {
     display: inline-grid;
     padding:3em;
-    -webkit-box-shadow: 21px 10px 31px -4px rgba(0,0,0,0.17);
-    -moz-box-shadow: 21px 10px 31px -4px rgba(0,0,0,0.17);
-    box-shadow: 21px 10px 31px -4px rgba(0,0,0,0.17);
-    margin:1em;
+    width: 5em;
+    -webkit-box-shadow: 24px 31px 60px -20px rgba(56,112,109,1);
+-moz-box-shadow: 24px 31px 60px -20px rgba(56,112,109,1);
+box-shadow: 24px 31px 60px -20px rgba(56,112,109,1);
+    margin:0.5em;
+    border-radius: 88px 0px 88px 0px;
+    -moz-border-radius: 70px 0px 70px 0px;
+    -webkit-border-radius: 88px 0px 88px 0px;
+    border: 0px solid #000000;
+    background-color: #7F9C96;
+    color: #CBDF90;
+}
+
+.user-item h3 {
+    text-transform: uppercase;
 }
 
 

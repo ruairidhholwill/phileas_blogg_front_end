@@ -1,0 +1,12 @@
+.top-users {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.top-users-title {
+    font-weight: 100;
+    text-transform: uppercase;
+    text-align: center;
+    color: #1B4079;
+}

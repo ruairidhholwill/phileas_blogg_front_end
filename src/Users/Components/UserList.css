@@ -1,10 +1,6 @@
 .user-list {
-    color: red;
-    margin:10em;
+    font-family: Futura, sans-serif;
+    margin:3em;
+    text-align: center;
+    margin:0 auto;
 }
-
-.user-list-box{
-text-align: center;
-margin:0 auto;
-}
-

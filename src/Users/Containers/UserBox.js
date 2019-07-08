@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import UserForm from '../Components/UserForm.js'
+import './UserBox.css'
 import UserList from '../Components/UserList.js'
 
 
@@ -46,10 +46,8 @@ class UserBox extends Component {
 
     render() {
         return (
-            <main>
-                <h2>Register new Account</h2>
-                <UserForm onFormSubmit={this.postData}/>
-                <h2>Top Users:</h2>
+            <main className="top-users">
+                <h3 className="top-users-title">Top Users:</h3>
                 <UserList topUsers={this.state.topUsers}/>
             </main>
         )

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Fragment} from "react";
 import HomeNavBar from "./HomeNavBar"
 import UserBox from "../Users/Containers/UserBox"
 import CountryContainer from "../Countries/Containers/CountryContainer"
@@ -7,15 +7,16 @@ import ReviewBox from "../Reviews/Containers/ReviewBox";
 
 
 const Home = () =>(
-  <div>
     <Router>
-     <HomeNavBar className="home-nav"/>
-          <Switch>
-            <Route path="/users" component={UserBox}/>
-            <Route path ="/reviews" component={ReviewBox}/>
-            <Route path="/countries" component={CountryContainer}/>
-           </Switch>
+      <header className="home-nav-header">
+        <HomeNavBar className="home-nav"/>
+      </header>
+      <Switch>
+        <Route path="/users" component={UserBox}/>
+        <Route path ="/reviews" component={ReviewBox}/>
+        <Route path="/countries" component={CountryContainer}/>
+      </Switch>
     </Router>
-  </div>
+  
 );
 export default Home;
