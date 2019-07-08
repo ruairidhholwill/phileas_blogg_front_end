@@ -78,7 +78,7 @@ render(){
     {this.generateOptions()}
     </select>
     <input type="text" placeholder="Write title" value={this.state.title} onChange={this.handleTitleChange}/>
-      <div class="rating-stars" onChange={this.handleRatingChange}>
+      <div className="rating-stars" onChange={this.handleRatingChange}>
           <input type="radio" name="rating" value = '1' />
           <input type="radio" name="rating" value = '2' />
           <input type="radio" name="rating" value = '3' />
