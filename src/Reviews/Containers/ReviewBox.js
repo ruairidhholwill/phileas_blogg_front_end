@@ -71,8 +71,6 @@ class ReviewBox extends Component {
   render() {
     return (
       <div className="comment-box">
-        <h2>Add Review</h2>
-        <ReviewForm onReviewSubmit={this.postData} countries={this.state.countries} />
         <h2>Reviews</h2>
         <ReviewList data={this.state.reviews} />
       </div>
