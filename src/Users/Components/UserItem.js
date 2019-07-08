@@ -5,8 +5,8 @@ class UserItem extends Component {
     render() {
         return (
             <div className="user-item">
-                <h3>{this.props.username}</h3>
-                <h4>{this.props.name}</h4>
+                <h2>{this.props.username}</h2>
+                <h3>{this.props.name}</h3>
             </div>
         )
     }
@@ -14,5 +14,3 @@ class UserItem extends Component {
 
 
 export default UserItem;
-
-
