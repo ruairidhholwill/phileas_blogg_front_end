@@ -40,7 +40,6 @@ class ReviewListBox extends Component {
   
 
   render() {
-    console.log(this.state.reviews)
     return (
       <div className="comment-box">
         {/* <h2>Add Review</h2>
