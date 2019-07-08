@@ -12,7 +12,6 @@ class ReviewBox extends Component {
       reviews: [],
       reviewedCountries: []
     };
-    this.postData = this.postData.bind(this)
   }
 
   componentDidMount() {
@@ -33,39 +32,6 @@ class ReviewBox extends Component {
       .then(res => res.json())
       .then(reviewedCountry => this.setState({ reviewedCountries: reviewedCountry._embedded.countries }))
       .catch(err => console.error)
-  }
-
-  postData(data) {
-    const countries = this.state.reviewedCountries.map(country => country.name)
-    if (countries.includes(data.country) === false) {
-
-      fetch('http://localhost:8080/countries', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data.country)
-      })
-        .then(res => res.json())
-        .then(reviewedCountry => this.setState(prevState => {
-          return { reviewedCountries: [...prevState.reviewedCountries, reviewedCountry] }
-        }))
-    }
-
-    fetch('http://localhost:8080/reviews', {
-      method: 'POST',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(data)
-    })
-      .then(res => res.json())
-      .then(reviewData => this.setState(prevState => {
-        return { reviews: [...prevState.reviews, reviewData] }
-      }))
-
   }
 
   render() {

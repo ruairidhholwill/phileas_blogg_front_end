@@ -11,7 +11,6 @@ class UserBox extends Component {
             users: [],
             topUsers: []
         }
-        this.postData = this.postData.bind(this)
     }
 
     componentDidMount() {
@@ -28,21 +27,21 @@ class UserBox extends Component {
         .catch(err => console.err)
       }
 
-      postData(data) {
-        console.log(data)
-        return fetch('http://localhost:8080/users', {
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(data)
-        })
-          .then(res => res.json())
-          .then(userData => this.setState(prevState => {
-            return {users: [...prevState.users, userData]}
-          }))
-      }
+      // postData(data) {
+      //   console.log(data)
+      //   return fetch('http://localhost:8080/users', {
+      //     method: 'POST',
+      //     headers: {
+      //       'Accept': 'application/json',
+      //       'Content-Type': 'application/json'
+      //     },
+      //     body: JSON.stringify(data)
+      //   })
+      //     .then(res => res.json())
+      //     .then(userData => this.setState(prevState => {
+      //       return {users: [...prevState.users, userData]}
+      //     }))
+      // }
 
     render() {
         return (
