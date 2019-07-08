@@ -5,6 +5,7 @@ import './Main.css'
 import UserForm from "../Users/Components/UserForm"
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import ReviewForm from "../Reviews/Components/ReviewForm";
+import IndividualReviewBox from "../Reviews/Containers/IndividualReviewBox"
 import ErrorPage from './ErrorPage'
 
 
@@ -111,6 +112,7 @@ class Main extends Component{
                   <Route path="/add-user" render={() => <UserForm onFormSubmit = {this.postUserData}/>}/>
                   <Route path="/add-user" component={UserForm}/>
                   <Route path="/add-review" render={() => <ReviewForm countries = {this.state.countries} onReviewSubmit = {this.postReviewData}/>}/>
+                  <Route path="/review/1" component={IndividualReviewBox} />
                   <Route component={ErrorPage} />
               </Switch>
           </main>
