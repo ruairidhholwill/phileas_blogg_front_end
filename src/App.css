@@ -1,5 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway800&display=swap');
 body {
+
   display: flex;
   flex-direction: column;
   justify-content: center;
+  
+  background: linear-gradient(90deg, rgba(72,191,124,1) 47%, rgba(46,139,87,1) 100%);
+
 }

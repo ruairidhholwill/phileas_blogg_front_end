@@ -5,7 +5,11 @@
     -moz-box-shadow: 21px 10px 31px -4px rgba(0,0,0,0.17);
     box-shadow: 21px 10px 31px -4px rgba(0,0,0,0.17);
     margin:1em;
+    background-color: #ededed;
+    border-radius: 1em;
+    font-family: 'Raleway', sans-serif;
+    color: #424242;
+    text-shadow: 2px 2px 3px rgba(150, 150, 150, 0.58);
+
+
 }
-
-
-
