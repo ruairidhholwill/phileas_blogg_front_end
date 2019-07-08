@@ -8,13 +8,13 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 const Home = () =>(
   <div>
+    <Router>
      <HomeNavBar className="home-nav"/>
           <Switch>
             <Route path="/users" component={UserBox}/>
             <Route path="/countries" component={CountryContainer}/>
            </Switch>
-  <h4>Home</h4>
-  <p>Welcome in our Phileas blog app</p>
+    </Router>
   </div>
 );
 export default Home;
