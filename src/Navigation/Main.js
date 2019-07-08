@@ -112,7 +112,9 @@ class Main extends Component{
                   <Route path="/add-user" render={() => <UserForm onFormSubmit = {this.postUserData}/>}/>
                   <Route path="/add-user" component={UserForm}/>
                   <Route path="/add-review" render={() => <ReviewForm countries = {this.state.countries} onReviewSubmit = {this.postReviewData}/>}/>
-                  <Route path="/review/1" component={IndividualReviewBox} />
+                  {/* NEED TO PASS IN ID!! */}
+                  {/* <Route path={"/review/" + this.state.reviews.id}  component={IndividualReviewBox} /> */}
+                  <Route path="/reviews/1" component={IndividualReviewBox} />
                   <Route component={ErrorPage} />
               </Switch>
           </main>

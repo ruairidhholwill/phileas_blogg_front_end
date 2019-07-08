@@ -7,7 +7,7 @@ class Review extends Component{
 render(){
     console.log(this.props.id)
     return(
-      <a href={"/review/" + this.props.id}>
+      <a href={"/reviews/" + this.props.id}>
         <div className="review">
           <h4>Title: {this.props.title}</h4>
           <p>Text: {this.props.text}</p>
