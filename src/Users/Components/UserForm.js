@@ -43,12 +43,15 @@ class UserForm extends Component {
             <main className="user-form-main">
                 <h2>Register:</h2>
                 <form className="user-form" onSubmit={this.handleSubmit}>
-                    <input
-                        type="text"
-                        placeholder="Username"
-                        value={this.state.username}
-                        onChange={this.handleUsernameChange}
-                    />
+                    <label for="username">Username:
+                        <input
+                            id="username"
+                            type="text"
+                            placeholder="Username"
+                            value={this.state.username}
+                            onChange={this.handleUsernameChange}
+                        />
+                    </label>
                     <input
                         type="text"
                         placeholder="Your name"

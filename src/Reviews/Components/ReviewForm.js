@@ -77,20 +77,30 @@ render(){
     <main className="review-form-main">
     <h2>Submit review:</h2>
       <form className="review-form" onSubmit={this.handleSubmit}>
-      <select  id="country-selector" defaultValue="default" onChange={this.handleSelectChange}>
-      <option disabled value="default">Choose a country...</option>
-      {this.generateOptions()}
-      </select>
-      <input type="text" placeholder="Write title" value={this.state.title} onChange={this.handleTitleChange}/>
-        <div className="rating-stars" onChange={this.handleRatingChange}>
+      <label for="country-selector">Select country: 
+        <select  id="country-selector" defaultValue="default" onChange={this.handleSelectChange}>
+        <option disabled value="default">Choose a country...</option>
+        {this.generateOptions()}
+        </select>
+      </label>
+      <label for="title">Title:
+        <input id="title" type="text" placeholder="Write title" value={this.state.title} onChange={this.handleTitleChange}/>
+      </label>
+      <label for="rating"> Rating:
+        <div id="rating" className="rating-stars" onChange={this.handleRatingChange}>
             <input type="radio" name="rating" value = '1' />
             <input type="radio" name="rating" value = '2' />
             <input type="radio" name="rating" value = '3' />
             <input type="radio" name="rating" value = '4' />
             <input type="radio" name="rating" value = '5' />
         </div>
-      <input type="date" value={this.state.date} onChange={this.handleDateChange}/>
-      <textarea placeholder="Write review" value={this.state.text} onChange={this.handleTextChange}></textarea>
+      </label>
+      <label for="date">Select date:
+      <input id="date" type="date" value={this.state.date} onChange={this.handleDateChange}/>
+      </label>
+      <label for="text">Write review:
+      <textarea id="text" placeholder="Write review" value={this.state.text} onChange={this.handleTextChange}></textarea>
+      </label>
       <input type="submit" value="Write Review"/>
       </form>
     </main>
