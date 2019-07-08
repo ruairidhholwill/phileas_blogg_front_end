@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import CityList from '../Components/CityList.js';
+import './CountryContainer.css'
+import CountryList from '../Components/CountryList.js';
 
-class CityContainer extends Component {
+class CountryContainer extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            cities: []
+            countries: []
         }
     }
 
@@ -13,19 +14,19 @@ class CityContainer extends Component {
         const url = 'https://restcountries.eu/rest/v2/all?fields=name;capital'
         fetch(url)
           .then(res => res.json())
-          .then(cities => this.setState({cities: cities}))
+          .then(countries => this.setState({countries: countries}))
           .catch(err => console.error)
     }
 
 
     render(){
         return (
-            <main>
-                <CityList cities={this.state.cities}/>
+            <main className ="country-container">
+                <CountryList countries={this.state.countries}/>
             </main>
         )
     }
 
 }
 
-export default CityContainer
+export default CountryContainer
