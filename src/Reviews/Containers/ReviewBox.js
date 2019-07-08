@@ -36,7 +36,7 @@ class ReviewBox extends Component {
   }
 
   postData(data) {
-    const countries = this.state.reviewedCountries.map(x => x.name)
+    const countries = this.state.reviewedCountries.map(country => country.name)
     if (countries.includes(data.country) === false) {
 
       fetch('http://localhost:8080/countries', {
