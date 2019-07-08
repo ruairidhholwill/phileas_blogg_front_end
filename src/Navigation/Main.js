@@ -12,24 +12,9 @@ class Main extends Component{
     super(props)
     this.state = {
       users: [],
-      topUser: []
     }
 
     this.postData = this.postData.bind(this);
-  }
-
-  componentDidMount() {
-    let allUsersURL = "http://localhost:8080/users"
-    fetch(allUsersURL)
-      .then(res => res.json())
-      .then(userData => this.setState({ users: userData._embedded.users }))
-      .catch(err => console.err)
-
-    let topUsersURL = "http://localhost:8080/users/ranking"
-    fetch(topUsersURL)
-    .then(res => res.json())
-    .then(topUserData => this.setState({ topUsers: topUserData }))
-    .catch(err => console.err)
   }
 
   postData(data) {
