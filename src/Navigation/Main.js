@@ -2,9 +2,9 @@ import React, {Component} from "react";
 import Home from "./Home";
 import NavBar from "./NavBar";
 import './Main.css'
-import ReviewFormBox from "../Reviews/Containers/ReviewFormBox"
 import UserForm from "../Users/Components/UserForm"
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import ReviewForm from "../Reviews/Components/ReviewForm";
 
 
 class Main extends Component{
@@ -12,10 +12,14 @@ class Main extends Component{
     super(props)
     this.state = {
       users: [],
-      topUser: []
+      reviews: [],
+      topUser: [],
+      countries: [],
+      reviewedCountries: []
     }
 
-    this.postData = this.postData.bind(this);
+    this.postUserData = this.postUserData.bind(this);
+    this.postReviewData = this.postReviewData.bind(this);
   }
 
   componentDidMount() {
@@ -30,9 +34,21 @@ class Main extends Component{
     .then(res => res.json())
     .then(topUserData => this.setState({ topUsers: topUserData }))
     .catch(err => console.err)
+
+    let reviewedCountriesUrl = 'http://localhost:8080/countries'
+      fetch(reviewedCountriesUrl)
+        .then(res => res.json())
+        .then(reviewedCountry => this.setState({ reviewedCountries: reviewedCountry._embedded.countries }))
+        .catch(err => console.error)
+
+    let countriesUrl = 'https://restcountries.eu/rest/v2/all?fields=name'
+      fetch(countriesUrl)
+        .then(res => res.json())
+        .then(countries => this.setState({ countries: countries }))
+        .catch(err => console.error)
   }
 
-  postData(data) {
+  postUserData(data) {
     return fetch('http://localhost:8080/users', {
       method: 'POST',
       headers: {
@@ -46,25 +62,60 @@ class Main extends Component{
         return {users: [...prevState.users, userData]}
       }))
   }
+
+
+  postReviewData(data) {
+    const countries = this.state.reviewedCountries.map(country => country.name)
+    if (countries.includes(data.country) === false) {
+
+      fetch('http://localhost:8080/countries', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data.country)
+      })
+        .then(res => res.json())
+        .then(reviewedCountry => this.setState(prevState => {
+          return { reviewedCountries: [...prevState.reviewedCountries, reviewedCountry] }
+        }))
+    }
+
+    fetch('http://localhost:8080/reviews', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+        .then(res => res.json())
+        .then(reviewData => this.setState(prevState => {
+          return { reviews: [...prevState.reviews, reviewData] }
+        }))
+  }
   
 
   render(){
-    return(<Router>
-        <main className="layout">
-        <header>
-         <a href="/"><img id="logo" src="/images/balloon.png" path="/" component={Home}/></a>
-          <NavBar className="main-nav"/>
-        </header>
-            <Switch>
-                <Route exact path="/" component={Home}/>
-                <Route path="/add-user" render={() => <UserForm onFormSubmit = {this.postData}/>}/>
-                <Route path="/add-user" component={UserForm}/>
-                <Route path="/add-review" component={ReviewFormBox}/>
-            </Switch>
-        </main>
-    </Router>
-  )
-  }
+    return(
+      <Router>
+          <main className="layout">
+          <header>
+          <a href="/"><img id="logo" src="/images/balloon.png" path="/" component={Home}/></a>
+            <NavBar className="main-nav"/>
+          </header>
+              <Switch>
+                  <Route exact path="/" component={Home}/>
+                  <Route path="/add-user" render={() => <UserForm onFormSubmit = {this.postUserData}/>}/>
+                  <Route path="/add-user" component={UserForm}/>
+                  <Route path="/add-review" render={() => <ReviewForm countries = {this.state.countries} onReviewSubmit = {this.postReviewData}/>}/>
+              </Switch>
+          </main>
+      </Router>
+    )
+  };
+  
 }
 
-export default Main;
+export default Main

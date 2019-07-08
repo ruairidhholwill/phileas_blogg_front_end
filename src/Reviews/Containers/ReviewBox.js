@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Review from '../Components/Review'
+import ReviewList from '../Components/ReviewList'
 
 class ReviewBox extends Component {
 
@@ -70,7 +70,7 @@ class ReviewBox extends Component {
     render() {
       return (
         <div className="review-box">
-            <Review/>
+         <ReviewList data={this.state.reviews}/>
         </div>
       )
     }
