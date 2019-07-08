@@ -48,7 +48,7 @@ class UserBox extends Component {
             <main>
                 <h2>Register new Account</h2>
                 <UserForm onFormSubmit={this.postData}/>
-                <h2>Registered Users:</h2>
+                <h2>Top Users:</h2>
                 <UserList topUsers={this.state.topUsers}/>
             </main>
         )
