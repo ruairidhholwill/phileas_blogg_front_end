@@ -69,9 +69,9 @@ class ReviewBox extends Component {
   
     render() {
       return (
-        <div className="review-box">
+        <main className="review-box">
          <ReviewList data={this.state.reviews}/>
-        </div>
+        </main>
       )
     }
   
