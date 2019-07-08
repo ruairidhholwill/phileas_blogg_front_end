@@ -7,3 +7,14 @@
     width: 60px;
 
 }
+
+.nav-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    list-style-type: none;
+}
+
+li a {
+    text-decoration: none;
+}
