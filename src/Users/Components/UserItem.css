@@ -1,0 +1,11 @@
+.user-item {
+    display: inline-grid;
+    padding:3em;
+    -webkit-box-shadow: 21px 10px 31px -4px rgba(0,0,0,0.17);
+    -moz-box-shadow: 21px 10px 31px -4px rgba(0,0,0,0.17);
+    box-shadow: 21px 10px 31px -4px rgba(0,0,0,0.17);
+    margin:1em;
+}
+
+
+

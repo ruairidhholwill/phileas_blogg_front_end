@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import UserItem from './UserItem'
+import './UserList.css'
+
 
 
 class UserList extends Component {
@@ -12,9 +14,11 @@ class UserList extends Component {
         });
 
         return (
+            <div class="user-list-box">
             <main className="user-list">
                 {userNodes}
             </main>
+            </div>
         )
     }
 }
