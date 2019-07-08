@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Review from '../Components/Review'
+import ReviewForm from "../Components/ReviewForm"
 
-class ReviewBox extends Component {
+class ReviewFormBox extends Component {
 
     constructor(props) {
       super(props);
@@ -14,10 +14,10 @@ class ReviewBox extends Component {
     }
   
     componentDidMount() {
-      let reviewsUrl = "http://localhost:8080/reviews/all"
+      let reviewsUrl = "http://localhost:8080/reviews"
       fetch(reviewsUrl)
         .then(res => res.json())
-        .then(reviewData => this.setState({ reviews: reviewData }))
+        .then(reviewData => this.setState({ reviews: reviewData._embedded.reviews }))
         .catch(err => console.err)
   
       let countriesUrl = 'https://restcountries.eu/rest/v2/all?fields=name'
@@ -29,7 +29,7 @@ class ReviewBox extends Component {
       let reviewedCountriesUrl = 'http://localhost:8080/countries'
       fetch(reviewedCountriesUrl)
         .then(res => res.json())
-        .then(reviewedCountry => this.setState({ reviewedCountries: reviewedCountry }))
+        .then(reviewedCountry => this.setState({ reviewedCountries: reviewedCountry._embedded.countries }))
         .catch(err => console.error)
     }
   
@@ -52,7 +52,7 @@ class ReviewBox extends Component {
       }
   
       fetch('http://localhost:8080/reviews', {
-        method: 'GET',
+        method: 'POST',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
@@ -69,12 +69,14 @@ class ReviewBox extends Component {
   
     render() {
       return (
-        <div className="review-box">
-            <Review/>
+        <div className="comment-box">
+          <h2>Add Review</h2>
+          <ReviewForm onReviewSubmit={this.postData} countries={this.state.countries} />
         </div>
       )
     }
   
   }
   
-  export default ReviewBox;
+  export default ReviewFormBox;
+  

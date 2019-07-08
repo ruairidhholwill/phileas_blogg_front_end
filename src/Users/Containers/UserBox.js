@@ -15,10 +15,10 @@ class UserBox extends Component {
     }
 
     componentDidMount() {
-        let allUsersURL = "http://localhost:8080/users"
-        fetch(allUsersURL)
+        const url = "http://localhost:8080/users/all"
+        fetch(url)
           .then(res => res.json())
-          .then(userData => this.setState({ users: userData._embedded.users }))
+          .then(userData => this.setState({ users: userData }))
           .catch(err => console.err)
 
         let topUsersURL = "http://localhost:8080/users/ranking"
@@ -29,6 +29,7 @@ class UserBox extends Component {
       }
 
       postData(data) {
+        console.log(data)
         return fetch('http://localhost:8080/users', {
           method: 'POST',
           headers: {

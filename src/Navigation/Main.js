@@ -2,9 +2,10 @@ import React, {Component} from "react";
 import Home from "./Home";
 import NavBar from "./NavBar";
 import './Main.css'
-import ReviewBox from "../Reviews/Containers/ReviewBox"
+import ReviewFormBox from "../Reviews/Containers/ReviewFormBox"
 import UserForm from "../Users/Components/UserForm"
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+
 
 class Main extends Component{
   constructor(props) {
@@ -58,7 +59,7 @@ class Main extends Component{
                 <Route exact path="/" component={Home}/>
                 <Route path="/add-user" render={() => <UserForm onFormSubmit = {this.postData}/>}/>
                 <Route path="/add-user" component={UserForm}/>
-                <Route path="/add-review" component={ReviewBox}/>
+                <Route path="/add-review" component={ReviewFormBox}/>
             </Switch>
         </main>
     </Router>
