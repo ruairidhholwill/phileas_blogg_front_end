@@ -8,17 +8,24 @@ class UserBox extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            users: []
+            users: [],
+            topUsers: []
         }
         this.postData = this.postData.bind(this)
     }
 
     componentDidMount() {
-        const url = "http://localhost:8080/users"
-        fetch(url)
+        let allUsersURL = "http://localhost:8080/users"
+        fetch(allUsersURL)
           .then(res => res.json())
           .then(userData => this.setState({ users: userData._embedded.users }))
           .catch(err => console.err)
+
+        let topUsersURL = "http://localhost:8080/users/ranking"
+        fetch(topUsersURL)
+        .then(res => res.json())
+        .then(topUserData => this.setState({ topUsers: topUserData }))
+        .catch(err => console.err)
       }
 
       postData(data) {
@@ -42,7 +49,7 @@ class UserBox extends Component {
                 <h2>Register new Account</h2>
                 <UserForm onFormSubmit={this.postData}/>
                 <h2>Registered Users:</h2>
-                <UserList users={this.state.users}/>
+                <UserList topUsers={this.state.topUsers}/>
             </main>
         )
     }

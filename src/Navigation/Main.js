@@ -10,8 +10,10 @@ class Main extends Component{
   render(){
     return(<Router>
         <main className="layout">
+        <header>
          <a href="/"><img id="logo" src="/images/balloon.png" path="/" component={Home}/></a>
           <NavBar className="main-nav"/>
+        </header>
             <Switch>
                 <Route exact path="/" component={Home}/>
                 <Route path="/add-review" component={ReviewBox}/>

@@ -1,7 +1,6 @@
 import React from "react";
 import HomeNavBar from "./HomeNavBar"
 import UserBox from "../Users/Containers/UserBox"
-import ReviewBox from "../Reviews/Containers/ReviewBox"
 import CountryContainer from "../Countries/Containers/CountryContainer"
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
