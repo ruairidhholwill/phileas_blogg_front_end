@@ -10,7 +10,8 @@ class ReviewForm extends Component{
       rating:'',
       date:'',
       text:'',
-      country: ''
+      country: '',
+      user: ''
     };
 
     this.handleTitleChange = this.handleTitleChange.bind(this);
@@ -19,10 +20,9 @@ class ReviewForm extends Component{
     this.handleTextChange = this.handleTextChange.bind(this);
     this.handleSelectChange = this.handleSelectChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.generateOptions = this.generateOptions.bind(this);
-
-
-
+    this.generateCountryOptions = this.generateCountryOptions.bind(this);
+    this.generateUserOptions = this.generateUserOptions.bind(this);
+    this.handleUserSelectChange = this.handleUserSelectChange.bind(this);
     }
 
     handleSubmit(event){
@@ -33,13 +33,14 @@ class ReviewForm extends Component{
       const date = this.state.date;
       const text = this.state.text.trim();
       const country = this.state.country
+      const user = this.state.user
 
-      if (!title || !rating || !date || !text || !country){
+      if (!title || !rating || !date || !text || !country || !user){
         return
       }
 
-      this.props.onReviewSubmit({title: title, rating: rating, date: date, text: text, country: country})
-      this.setState({title: '', rating: '', date: '', text: '', country: ''});
+      this.props.onReviewSubmit({title, rating, date, text, country, user})
+      this.setState({title: '', rating: '', date: '', text: '', country: '', user: ''});
   }
 
   handleTitleChange(event){
@@ -48,7 +49,6 @@ class ReviewForm extends Component{
 
   handleRatingChange(event){
     this.setState({rating: event.target.value})
-
   }
 
   handleDateChange(event){
@@ -63,15 +63,22 @@ class ReviewForm extends Component{
     this.setState({country: event.target.value})
   }
 
-  generateOptions(){
+  handleUserSelectChange(event){
+      this.setState({user: event.target.value})
+  }
+
+  generateCountryOptions(){
     const options = this.props.countries.map((country, index) => {
       return <option value={country.name} key={index}>{country.name}</option>
     })
     return options
   }
 
-  getformattedDate(){
-
+  generateUserOptions(){
+    const options = this.props.users.map((user, index) => {      
+      return <option value={user._links.self.href} id={index} key={index}>{user.username}</option>
+    })
+    return options
   }
 
 
@@ -87,13 +94,18 @@ render(){
 
 
   return(
-
-
     <form className="review-form" onSubmit={this.handleSubmit}>
-    <select  id="country-selector" defaultValue="default" onChange={this.handleSelectChange}>
-    <option disabled value="default">Choose a country...</option>
-    {this.generateOptions()}
+
+    <select id="country-selector" defaultValue="default" onChange={this.handleSelectChange}>
+      <option disabled value="default">Choose a country...</option>
+      {this.generateCountryOptions()}
     </select>
+
+    <select id="user-selector" defaultValue="default" onChange={this.handleUserSelectChange}>
+      <option disabled value="default">Choose a user...</option>
+      {this.generateUserOptions()}
+    </select>
+
     <input type="text" placeholder="Write title" value={this.state.title} onChange={this.handleTitleChange}/>
       <div className="rating-stars" onChange={this.handleRatingChange}>
           <input type="radio" name="rating" value = '1' />
