@@ -4,7 +4,6 @@ import './UserItem.css'
 
 class UserItem extends Component {
     render() {
-        console.log(this.props)
         return (
             <Link to={`/users/${this.props.id}`}>
             <div className="user-item">

@@ -12,6 +12,7 @@ import UserBox from "../Users/Containers/UserBox"
 import CountryContainer from "../Countries/Containers/CountryContainer"
 import ReviewBox from "../Reviews/Containers/ReviewBox";
 import Home from "./Home"
+import IndividualCountryContainer from "../Countries/Containers/IndividualCountryContainer"
 
 
 class Main extends Component {
@@ -121,6 +122,7 @@ class Main extends Component {
             <Route path="/add-review" render={() => <ReviewForm countries={this.state.countries} onReviewSubmit={this.postReviewData} />} />
             <Route path="/reviews/:id" component={IndividualReviewBox} />
             <Route path="/users/:id" component={IndividualUserBox} />
+            <Route path="/countries/:name" component={IndividualCountryContainer} />
             <Route component={ErrorPage} />
           </Switch>
         </main>
