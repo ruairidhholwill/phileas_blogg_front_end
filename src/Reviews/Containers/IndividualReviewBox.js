@@ -18,24 +18,26 @@ class IndividualReviewBox extends Component {
             .catch(err => console.err)
     }
 
-    handleDeleteSubmit() {
-        let url = `http://localhost:8080${this.props.location.pathname}`
+    handleDeleteSubmit(event) {
+        // console.log(event)
+        // const id= event.target.value
+        let url = `http://localhost:8080/reviews/${this.props.match.params.id}`
         fetch(url, {
             method: 'DELETE',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
+            }
         })
         .then(res => res.json())
         .then(this.setState())
+        .catch(err => console.err)
     }
 
     render() {
         return (
             <div className="review-box">
-                <IndividualReviewList data={this.state.country} onDelete={this.handleDeleteSubmit}/>
+                <IndividualReviewList data={this.state.country} handleDelete={this.handleDeleteSubmit}/>
             </div>
         )
     }

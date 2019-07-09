@@ -2,9 +2,16 @@ import React,{Component} from "react";
 
 class IndividualReview extends Component{
 
+  handleDelete(event) {
+    event.preventDefault();
+    console.log(event.target.value)
+    // this.props.handleDelete({author: author, text: text});
+  }
 
 
-render(){
+
+
+  render(){
     return(
         <section className="review-container">
           <div className="review-content">
@@ -14,7 +21,8 @@ render(){
             <p>Date: {this.props.date}</p>
             <p>Country: {this.props.country}</p>
           </div>
-          <input type="submit" value={this.props.id} onClick={this.onDelete}></input>
+          {/* {console.log(this.props.id)} */}
+          <input type="submit" value={this.props.id} onClick={this.handleDelete}></input>
         </section>
     );
   }

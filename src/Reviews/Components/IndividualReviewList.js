@@ -6,7 +6,7 @@ class IndividualReviewList extends Component {
       const review = this.props.data
       return (
 
-        <IndividualReview date={review.date} rating={review.rating} title={review.title} key={review.id} text={review.text} country={review.country} id={review.id} onDelete={this.onDelete}/>
+        <IndividualReview date={review.date} rating={review.rating} title={review.title} key={review.id} text={review.text} country={review.country} id={review.id} handleDelete={this.handleDelete}/>
 
       );
   }
