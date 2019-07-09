@@ -104,7 +104,7 @@ class Main extends Component{
       <Router>
           <main className="layout">
           <header>
-          <a href="/"><img id="logo" src="/images/balloon.png" path="/" component={Home}/></a>
+          <a href="/"><img alt="balloon" id="logo" src="/images/balloon.png" path="/"/></a>
             <NavBar className="main-nav"/>
           </header>
               <Switch>

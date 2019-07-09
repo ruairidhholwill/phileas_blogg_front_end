@@ -5,7 +5,6 @@ class Review extends Component{
 
 
 render(){
-    console.log(this.props.id)
     return(
       <a href={"/reviews/" + this.props.id}>
         <div className="review">

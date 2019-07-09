@@ -11,7 +11,6 @@ class IndividualReviewBox extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props.location.pathname)
         let url = `http://localhost:8080${this.props.location.pathname}`
         fetch(url)
             .then(res => res.json())
