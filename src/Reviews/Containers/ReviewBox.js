@@ -32,16 +32,16 @@ class ReviewBox extends Component {
       .then(reviewedCountry => this.setState({ reviewedCountries: reviewedCountry._embedded.countries }))
       .catch(err => console.error)
   }
-
   render() {
     return (
-      <div className="comment-box">
-        <h2>Reviews</h2>
-        <ReviewList data={this.state.reviews} />
-      </div>
+      <main className="review-box">
+        <ReviewList data={this.state.reviews}/>
+      </main>
     )
   }
-
+  
 }
+
+
 
 export default ReviewBox;

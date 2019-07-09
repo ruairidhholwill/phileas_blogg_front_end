@@ -14,11 +14,9 @@ class UserList extends Component {
         });
 
         return (
-            <div class="user-list-box">
             <main className="user-list">
                 {userNodes}
             </main>
-            </div>
         )
     }
 }
