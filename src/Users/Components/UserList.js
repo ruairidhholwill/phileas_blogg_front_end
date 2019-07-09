@@ -5,11 +5,10 @@ import './UserList.css'
 
 
 class UserList extends Component {
-
     render() {
-        const userNodes = this.props.topUsers.map(user => {
+        const userNodes = this.props.topUsers.map((user, index) => {
             return (
-                <UserItem username={user.username} name={user.name} level={user.level}/>
+                <UserItem username={user.username} name={user.name} level={user.level} id={user.id} key={index}/>
             )
         });
 
