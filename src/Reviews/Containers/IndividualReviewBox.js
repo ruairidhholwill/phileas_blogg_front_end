@@ -9,7 +9,7 @@ class IndividualReviewBox extends Component {
             country: []
         };
 
-        this.handleDeleteSubmit = this.handleDeleteSubmit.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
     componentDidMount() {
@@ -20,9 +20,7 @@ class IndividualReviewBox extends Component {
             .catch(err => console.err)
     }
 
-    handleDeleteSubmit(event) {
-        console.log(event)
-        const id= event.target.value
+    handleDelete(id) {
         let url = `http://localhost:8080/reviews/${id}`
         fetch(url, {
             method: 'DELETE',
@@ -39,7 +37,7 @@ class IndividualReviewBox extends Component {
     render() {
         return (
             <div className="review-box">
-                <IndividualReviewList data={this.state.country} handleDelete={this.handleDeleteSubmit}/>
+                <IndividualReviewList data={this.state.country} handleDelete={this.handleDelete}/>
             </div>
         )
     }

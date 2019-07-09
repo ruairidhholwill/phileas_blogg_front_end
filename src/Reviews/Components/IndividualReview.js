@@ -1,20 +1,16 @@
 import React,{Component} from "react";
 
 class IndividualReview extends Component{
-  constructor(props) {
-    super(props);
+    constructor(props){
+      super(props)
 
-    this.handleClick = this.handleClick.bind(this);
+      this.handleClick = this.handleClick.bind(this);
+    }
+
+
+  handleClick() {
+    this.props.handleDelete(this.props.id)
   }
-
- handleClick(event) {
-    event.preventDefault();
-    console.log(event.target.value)
-
-  }
-
-
-
 
   render(){
     return(
