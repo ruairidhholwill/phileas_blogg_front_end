@@ -12,6 +12,10 @@ class IndividualReview extends Component{
     this.props.handleDelete(this.props.id)
   }
 
+  handleEditClick() {
+    this.props.handleEdit(this.props)
+  }
+
   render(){
     return(
         <section className="review-container">
@@ -23,6 +27,7 @@ class IndividualReview extends Component{
             <p>Country: {this.props.country}</p>
           </div>
           <input type="button" value="Delete" onClick={this.handleClick}></input>
+          <input type="button" value="Edit" onClick={this.handleEditClick}></input>
         </section>
     );
   }

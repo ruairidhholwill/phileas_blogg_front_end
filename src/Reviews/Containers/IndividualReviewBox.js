@@ -10,6 +10,7 @@ class IndividualReviewBox extends Component {
         };
 
         this.handleDelete = this.handleDelete.bind(this);
+        this.handleEdit = this.handleEdit.bind(this);
     }
 
     componentDidMount() {
@@ -33,11 +34,26 @@ class IndividualReviewBox extends Component {
         .then(this.setState())
         .catch(err => console.err)
     }
+    
+    handleEdit(id, data) {
+        let url = `http://localhost:8080/reviews/${id}`
+        fetch(url, {
+            method: 'PUT',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .catch(err => console.err)  
+
+    }
+
 
     render() {
         return (
             <div className="review-box">
-                <IndividualReviewList data={this.state.country} handleDelete={this.handleDelete}/>
+                <IndividualReviewList data={this.state.country} handleDelete={this.handleDelete} handleEdit={this.handleEdit}/>
             </div>
         )
     }
