@@ -1,21 +1,50 @@
 import React,{Component} from "react";
+import './ReviewItem.css';
 
 class Review extends Component{
 
 
 
 render(){
-    return(
-      <a href={"/reviews/" + this.props.id}>
+let reviewContent = this.props.text;
+
+if(this.props.text.length > 130){
+
+  let maxLength = 130;
+  let shorterReview = reviewContent.substr(0, maxLength);
+  shorterReview = shorterReview.substr(0, Math.min(shorterReview.length, shorterReview.lastIndexOf(" ")))
+
+
+return(
+
+
         <div className="review">
-          <h4>Title: {this.props.title}</h4>
-          <p>Text: {this.props.text}</p>
-          <p>Rating: {this.props.rating}</p>
-          <p>Date: {this.props.date}</p>
+
+          <h4 className="review-title"><a href={"/reviews/" + this.props.id}>{this.props.title}</a></h4>
+          <p className="review-content">{shorterReview + '...'}</p>
           <p>Country: {this.props.country}</p>
+          <p>Rating: {this.props.rating}</p>
+          <p class="post-date">Posted: {this.props.date}</p>
+
         </div>
-    </a>
-    );
+);
+
+} else {
+
+  return(
+
+
+      <div className="review">
+
+        <h4 className="review-title"><a href={"/reviews/" + this.props.id}>{this.props.title}</a></h4>
+        <p className="review-content">{this.props.text}</p>
+        <p>Country: {this.props.country}</p>
+        <p>Rating: {this.props.rating}</p>
+        <p class="post-date">Posted: {this.props.date}</p>
+      </div>
+);}
+
+
   }
 }
 

@@ -28,7 +28,8 @@ class ReviewForm extends Component{
       event.preventDefault();
       const title = this.state.title.trim();
       const rating = this.state.rating;
-      const date = this.state.date.trim();
+
+      const date = this.state.date;
       const text = this.state.text.trim();
       const country = this.state.country
 
@@ -68,10 +69,25 @@ class ReviewForm extends Component{
     return options
   }
 
+  getformattedDate(){
+
+  }
+
 
 
 render(){
+
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"];
+    const date = new Date();
+
+
+    const formattedDate = date.getDate() + " " + monthNames[(date.getMonth())] + " " +  date.getFullYear();
+
+
   return(
+
+
     <form className="review-form" onSubmit={this.handleSubmit}>
     <select  id="country-selector" defaultValue="default" onChange={this.handleSelectChange}>
     <option disabled value="default">Choose a country...</option>
@@ -85,8 +101,9 @@ render(){
           <input type="radio" name="rating" value = '4' />
           <input type="radio" name="rating" value = '5' />
       </div>
-    <input type="date" value={this.state.date} onChange={this.handleDateChange}/>
-    <textarea placeholder="Write review" value={this.state.text} onChange={this.handleTextChange}></textarea>
+
+    <input type="hidden"  value={this.state.date = formattedDate} onChange={this.handleDateChange}/>
+    <textarea  placeholder="Write review"  value={this.state.text} onChange={this.handleTextChange}></textarea>
     <input type="submit" value="Write Review"/>
     </form>
 

@@ -6,7 +6,7 @@ class IndividualReview extends Component{
 
 render(){
     return(
-        <div className="review">
+        <div className="sinegle-review">
           <h4>Title: {this.props.title}</h4>
           <p>Text: {this.props.text}</p>
           <p>Rating: {this.props.rating}</p>
