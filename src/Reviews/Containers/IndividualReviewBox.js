@@ -8,6 +8,8 @@ class IndividualReviewBox extends Component {
         this.state = {
             country: []
         };
+
+        this.handleDeleteSubmit = this.handleDeleteSubmit.bind(this);
     }
 
     componentDidMount() {
@@ -19,9 +21,9 @@ class IndividualReviewBox extends Component {
     }
 
     handleDeleteSubmit(event) {
-        // console.log(event)
-        // const id= event.target.value
-        let url = `http://localhost:8080/reviews/${this.props.match.params.id}`
+        console.log(event)
+        const id= event.target.value
+        let url = `http://localhost:8080/reviews/${id}`
         fetch(url, {
             method: 'DELETE',
             headers: {

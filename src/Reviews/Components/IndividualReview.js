@@ -1,11 +1,16 @@
 import React,{Component} from "react";
 
 class IndividualReview extends Component{
+  constructor(props) {
+    super(props);
 
-  handleDelete(event) {
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+ handleClick(event) {
     event.preventDefault();
     console.log(event.target.value)
-    // this.props.handleDelete({author: author, text: text});
+
   }
 
 
@@ -21,8 +26,7 @@ class IndividualReview extends Component{
             <p>Date: {this.props.date}</p>
             <p>Country: {this.props.country}</p>
           </div>
-          {/* {console.log(this.props.id)} */}
-          <input type="submit" value={this.props.id} onClick={this.handleDelete}></input>
+          <input type="button" value="Delete" onClick={this.handleClick}></input>
         </section>
     );
   }
