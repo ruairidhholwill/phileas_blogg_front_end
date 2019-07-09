@@ -5,7 +5,6 @@ import CountryContainer from "../Countries/Containers/CountryContainer"
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import ReviewBox from "../Reviews/Containers/ReviewBox";
 
-
 const Home = () =>(
   <div>
     <Router>

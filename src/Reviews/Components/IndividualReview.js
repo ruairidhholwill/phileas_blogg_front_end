@@ -1,12 +1,11 @@
 import React,{Component} from "react";
 
-class Review extends Component{
+class IndividualReview extends Component{
 
 
 
 render(){
     return(
-      <a href={"/reviews/" + this.props.id}>
         <div className="review">
           <h4>Title: {this.props.title}</h4>
           <p>Text: {this.props.text}</p>
@@ -14,9 +13,8 @@ render(){
           <p>Date: {this.props.date}</p>
           <p>Country: {this.props.country}</p>
         </div>
-    </a>
     );
   }
 }
 
-export default Review;
+export default IndividualReview;

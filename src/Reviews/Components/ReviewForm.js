@@ -59,7 +59,6 @@ class ReviewForm extends Component{
   }
 
   handleSelectChange(event){
-    console.log(event.target)
     this.setState({country: event.target.value})
   }
 

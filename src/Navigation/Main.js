@@ -5,6 +5,8 @@ import './Main.css'
 import UserForm from "../Users/Components/UserForm"
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import ReviewForm from "../Reviews/Components/ReviewForm";
+import IndividualReviewBox from "../Reviews/Containers/IndividualReviewBox"
+import ErrorPage from './ErrorPage'
 
 
 class Main extends Component{
@@ -102,7 +104,7 @@ class Main extends Component{
       <Router>
           <main className="layout">
           <header>
-          <a href="/"><img id="logo" src="/images/balloon.png" path="/" component={Home}/></a>
+          <a href="/"><img alt="balloon" id="logo" src="/images/balloon.png" path="/"/></a>
             <NavBar className="main-nav"/>
           </header>
               <Switch>
@@ -110,6 +112,10 @@ class Main extends Component{
                   <Route path="/add-user" render={() => <UserForm onFormSubmit = {this.postUserData}/>}/>
                   <Route path="/add-user" component={UserForm}/>
                   <Route path="/add-review" render={() => <ReviewForm countries = {this.state.countries} onReviewSubmit = {this.postReviewData}/>}/>
+                  {/* NEED TO PASS IN ID!! */}
+                  {/* <Route path={"/review/" + this.state.reviews.id}  component={IndividualReviewBox} /> */}
+                  <Route path={window.location.pathname} component={IndividualReviewBox} />
+                  <Route component={ErrorPage} />
               </Switch>
           </main>
       </Router>
