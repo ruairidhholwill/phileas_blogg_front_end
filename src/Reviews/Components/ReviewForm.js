@@ -10,7 +10,8 @@ class ReviewForm extends Component{
       date:'',
       text:'',
       country: '',
-      user: ''
+      user: '',
+      user_id: ''
     };
 
     this.handleTitleChange = this.handleTitleChange.bind(this);
@@ -18,10 +19,10 @@ class ReviewForm extends Component{
     this.handleDateChange = this.handleDateChange.bind(this);
     this.handleTextChange = this.handleTextChange.bind(this);
     this.handleSelectChange = this.handleSelectChange.bind(this);
-    this.handleUserSelectChange = this.handleUserSelectChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.generateCountryOptions = this.generateCountryOptions.bind(this);
     this.generateUserOptions = this.generateUserOptions.bind(this);
+    this.handleUserIDSelectChange = this.handleUserIDSelectChange.bind(this);
     }
 
     handleSubmit(event){
@@ -31,14 +32,14 @@ class ReviewForm extends Component{
       const date = this.state.date.trim();
       const text = this.state.text.trim();
       const country = this.state.country
-      const user = this.state.user
+      const user_id = this.state.user_id
 
-      if (!title || !rating || !date || !text || !country || !user ){
+      if (!title || !rating || !date || !text || !country || !user_id){
         return
       }
 
-      this.props.onReviewSubmit({title: title, rating: rating, date: date, text: text, country: country, user: user})
-      this.setState({title: '', rating: '', date: '', text: '', country: '', user: ''});
+      this.props.onReviewSubmit({title: title, rating: rating, date: date, text: text, country: country, user_id: user_id})
+      this.setState({title: '', rating: '', date: '', text: '', country: '', user_id: ''});
   }
 
   handleTitleChange(event){
@@ -47,7 +48,6 @@ class ReviewForm extends Component{
 
   handleRatingChange(event){
     this.setState({rating: event.target.value})
-
   }
 
   handleDateChange(event){
@@ -62,8 +62,8 @@ class ReviewForm extends Component{
     this.setState({country: event.target.value})
   }
 
-  handleUserSelectChange(event){
-    this.setState({user: event.target.value})
+  handleUserIDSelectChange(event){
+    this.setState({user_id: event.target.value})
   }
 
   generateCountryOptions(){
@@ -75,7 +75,7 @@ class ReviewForm extends Component{
 
   generateUserOptions(){
     const options = this.props.users.map((user, index) => {      
-      return <option value={user.username} key={index}>{user.username}</option>
+      return <option value={user.id} key={index}>{user.id}</option>
     })
     return options
   }
@@ -91,7 +91,7 @@ render(){
       {this.generateCountryOptions()}
     </select>
 
-    <select id="user-selector" defaultValue="default" onChange={this.handleUserSelectChange}>
+    <select id="user-selector" defaultValue="default" onChange={this.handleUserIDSelectChange}>
       <option disabled value="default">Choose a user...</option>
       {this.generateUserOptions()}
     </select>

@@ -13,7 +13,7 @@ render(){
           <p>Rating: {this.props.rating}</p>
           <p>Date: {this.props.date}</p>
           <p>Country: {this.props.country}</p>
-          <p>User: {this.props.user}</p>
+          <p>User: {this.props.user_id}</p>
         </div>
     </a>
     );
