@@ -1,4 +1,5 @@
 import React,{Component} from "react";
+import {Link} from 'react-router-dom'
 
 class Review extends Component{
 
@@ -6,7 +7,7 @@ class Review extends Component{
 
 render(){
     return(
-      <a href={"/reviews/" + this.props.id}>
+      <Link to={`/reviews/${this.props.id}`}>
         <div className="review">
           <h4>Title: {this.props.title}</h4>
           <p>Text: {this.props.text}</p>
@@ -15,7 +16,7 @@ render(){
           <p>Country: {this.props.country}</p>
           <p>User: {this.props.user_id}</p>
         </div>
-    </a>
+    </Link>
     );
   }
 }

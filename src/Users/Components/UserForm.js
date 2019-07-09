@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import './UserForm.css'
 
 
 class UserForm extends Component {
@@ -39,21 +40,27 @@ class UserForm extends Component {
 
     render () {
         return (
-            <form className="user-form" onSubmit={this.handleSubmit}>
-                <input
-                    type="text"
-                    placeholder="Username"
-                    value={this.state.username}
-                    onChange={this.handleUsernameChange}
-                />
-                <input
-                    type="text"
-                    placeholder="Your name"
-                    value={this.state.name}
-                    onChange={this.handleNameChange}
-                />
-                <input type="submit" value="post" />
-            </form>
+            <main className="user-form-main">
+                <h2>Register:</h2>
+                <form className="user-form" onSubmit={this.handleSubmit}>
+                    <label for="username">Username:
+                        <input
+                            id="username"
+                            type="text"
+                            placeholder="Username"
+                            value={this.state.username}
+                            onChange={this.handleUsernameChange}
+                        />
+                    </label>
+                    <input
+                        type="text"
+                        placeholder="Your name"
+                        value={this.state.name}
+                        onChange={this.handleNameChange}
+                    />
+                    <input type="submit" value="post" />
+                </form>
+            </main>
         )
     }
 

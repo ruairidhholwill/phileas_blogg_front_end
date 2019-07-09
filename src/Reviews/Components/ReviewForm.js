@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './ReviewForm.css'
 
 class ReviewForm extends Component{
 
@@ -10,8 +11,7 @@ class ReviewForm extends Component{
       date:'',
       text:'',
       country: '',
-      user: '',
-      user_id: ''
+      user: ''
     };
 
     this.handleTitleChange = this.handleTitleChange.bind(this);
@@ -22,7 +22,7 @@ class ReviewForm extends Component{
     this.handleSubmit = this.handleSubmit.bind(this);
     this.generateCountryOptions = this.generateCountryOptions.bind(this);
     this.generateUserOptions = this.generateUserOptions.bind(this);
-    this.handleUserIDSelectChange = this.handleUserIDSelectChange.bind(this);
+    this.handleUserSelectChange = this.handleUserSelectChange.bind(this);
     }
 
     handleSubmit(event){
@@ -32,14 +32,14 @@ class ReviewForm extends Component{
       const date = this.state.date.trim();
       const text = this.state.text.trim();
       const country = this.state.country
-      const user_id = this.state.user_id
+      const user = this.state.user
 
-      if (!title || !rating || !date || !text || !country || !user_id){
+      if (!title || !rating || !date || !text || !country || !user){
         return
       }
 
-      this.props.onReviewSubmit({title: title, rating: rating, date: date, text: text, country: country, user_id: user_id})
-      this.setState({title: '', rating: '', date: '', text: '', country: '', user_id: ''});
+      this.props.onReviewSubmit({title, rating, date, text, country, user})
+      this.setState({title: '', rating: '', date: '', text: '', country: '', user: ''});
   }
 
   handleTitleChange(event){
@@ -62,8 +62,8 @@ class ReviewForm extends Component{
     this.setState({country: event.target.value})
   }
 
-  handleUserIDSelectChange(event){
-    this.setState({user_id: event.target.value})
+  handleUserSelectChange(event){
+      this.setState({user: event.target.value})
   }
 
   generateCountryOptions(){
@@ -75,7 +75,7 @@ class ReviewForm extends Component{
 
   generateUserOptions(){
     const options = this.props.users.map((user, index) => {      
-      return <option value={user.id} key={index}>{user.id}</option>
+      return <option value={user._links.self.href} id={index} key={index}>{user.username}</option>
     })
     return options
   }
@@ -91,7 +91,7 @@ render(){
       {this.generateCountryOptions()}
     </select>
 
-    <select id="user-selector" defaultValue="default" onChange={this.handleUserIDSelectChange}>
+    <select id="user-selector" defaultValue="default" onChange={this.handleUserSelectChange}>
       <option disabled value="default">Choose a user...</option>
       {this.generateUserOptions()}
     </select>
