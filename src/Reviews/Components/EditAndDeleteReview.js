@@ -17,7 +17,7 @@ class EditAndDeleteReview extends Component{
     this.handleTextChange = this.handleTextChange.bind(this);
     this.handleSelectChange = this.handleSelectChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.generateOptions = this.generateOptions.bind(this);
+    this.generateCountryOptions = this.generateCountryOptions.bind(this);
 
 
 
@@ -61,7 +61,7 @@ class EditAndDeleteReview extends Component{
     this.setState({country: event.target.value})
   }
 
-  generateOptions(){
+  generateCountryOptions(){
     const options = this.props.countries.map((country, index) => {
       return <option value={country.name} key={index}>{country.name}</option>
     })
@@ -75,7 +75,7 @@ render(){
     <form className="review-form" onSubmit={this.handleSubmit}>
     <select  id="country-selector" defaultValue="default" onChange={this.handleSelectChange}>
     <option disabled value="default">Choose a country...</option>
-    {this.generateOptions()}
+    {this.generateCountryOptions()}
     </select>
     <input type="text" placeholder="Write title" value={this.state.title} onChange={this.handleTitleChange}/>
       <div className="rating-stars" onChange={this.handleRatingChange}>

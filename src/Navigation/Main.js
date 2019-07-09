@@ -48,6 +48,7 @@ class Main extends Component{
         .then(res => res.json())
         .then(countries => this.setState({ countries: countries }))
         .catch(err => console.error)
+    
   }
 
   postUserData(data) {
@@ -68,6 +69,8 @@ class Main extends Component{
 
   postReviewData(data) {
     const countries = this.state.reviewedCountries.map(country => country.name)
+    console.log("Logging data", data);
+    
     if (countries.includes(data.country) === false) {
 
       fetch('http://localhost:8080/countries', {
@@ -111,7 +114,7 @@ class Main extends Component{
                   <Route exact path="/" component={Home}/>
                   <Route path="/add-user" render={() => <UserForm onFormSubmit = {this.postUserData}/>}/>
                   <Route path="/add-user" component={UserForm}/>
-                  <Route path="/add-review" render={() => <ReviewForm countries = {this.state.countries} onReviewSubmit = {this.postReviewData}/>}/>
+                  <Route path="/add-review" render={() => <ReviewForm users = {this.state.users} countries = {this.state.countries} onReviewSubmit = {this.postReviewData}/>}/>
                   {/* NEED TO PASS IN ID!! */}
                   {/* <Route path={"/review/" + this.state.reviews.id}  component={IndividualReviewBox} /> */}
                   <Route path={window.location.pathname} component={IndividualReviewBox} />
