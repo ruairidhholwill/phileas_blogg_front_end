@@ -9,7 +9,8 @@ class ReviewBox extends Component {
     this.state = {
       countries: [],
       reviews: [],
-      reviewedCountries: []
+      reviewedCountries: [],
+      searchText: ''
     };
   }
 
@@ -35,7 +36,9 @@ class ReviewBox extends Component {
   render() {
     return (
       <div>
-      <input type="text">search...</input>
+        <div>
+      <input id="search-bar" type="input" placeholder="Search.." onChange={this.handleChange}></input>
+      </div>
       <main className="review-box">
         <ReviewList data={this.state.reviews}/>
       </main>
