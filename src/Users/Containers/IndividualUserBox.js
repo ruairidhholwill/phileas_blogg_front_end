@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import IndividualUserList from '../Components/IndividualUserList'
 
 class IndividualUserBox extends Component {
-
+    
     constructor(props) {
         super(props);
         this.state = {

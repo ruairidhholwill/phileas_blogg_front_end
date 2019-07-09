@@ -4,12 +4,16 @@ class IndividualReview extends Component{
     constructor(props){
       super(props)
 
-      this.handleClick = this.handleClick.bind(this);
+      this.handleEditClick = this.handleEditClick.bind(this);
     }
 
 
   handleClick() {
     this.props.handleDelete(this.props.id)
+  }
+
+  handleEditClick() {
+    this.props.handleEditMode(this.props.id)
   }
 
   render(){
@@ -23,9 +27,11 @@ class IndividualReview extends Component{
             <p>Country: {this.props.country}</p>
           </div>
           <input type="button" value="Delete" onClick={this.handleClick}></input>
+          <input type="button" value="Edit" onClick={this.handleEditClick}></input>
         </section>
     );
   }
+
 }
 
 export default IndividualReview;

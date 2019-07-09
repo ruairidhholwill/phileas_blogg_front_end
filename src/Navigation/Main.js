@@ -24,7 +24,7 @@ class Main extends Component {
       topUser: [],
       countries: [],
       reviewedCountries: []
-    }
+     }
 
     this.postUserData = this.postUserData.bind(this);
     this.postReviewData = this.postReviewData.bind(this);
@@ -34,7 +34,7 @@ class Main extends Component {
     let allUsersURL = "http://localhost:8080/users"
     fetch(allUsersURL)
       .then(res => res.json())
-      .then(userData => this.setState({ users: userData._embedded.users }))
+      .then(userData => this.setState({ users: userData._embedded.users}))
       .catch(err => console.err)
 
     let topUsersURL = "http://localhost:8080/users/ranking"
@@ -50,10 +50,11 @@ class Main extends Component {
       .catch(err => console.error)
 
     let countriesUrl = 'https://restcountries.eu/rest/v2/all?fields=name'
-    fetch(countriesUrl)
-      .then(res => res.json())
-      .then(countries => this.setState({ countries: countries }))
-      .catch(err => console.error)
+      fetch(countriesUrl)
+        .then(res => res.json())
+        .then(countries => this.setState({ countries: countries }))
+        .catch(err => console.error)
+    
   }
 
   postUserData(data) {
@@ -74,6 +75,8 @@ class Main extends Component {
 
   postReviewData(data) {
     const countries = this.state.reviewedCountries.map(country => country.name)
+    console.log("Logging data", data);
+    
     if (countries.includes(data.country) === false) {
 
       fetch('http://localhost:8080/countries', {
@@ -119,7 +122,7 @@ class Main extends Component {
             <Route exact path="/reviews" component={ReviewBox} />
             <Route exact path="/countries" component={CountryContainer} />
             <Route path="/add-user" render={() => <UserForm onFormSubmit={this.postUserData} />} />
-            <Route path="/add-review" render={() => <ReviewForm countries={this.state.countries} onReviewSubmit={this.postReviewData} />} />
+            <Route path="/add-review" render={() => <ReviewForm countries={this.state.countries} users={this.state.users} onReviewSubmit={this.postReviewData} />} />
             <Route path="/reviews/:id" component={IndividualReviewBox} />
             <Route path="/users/:id" component={IndividualUserBox} />
             <Route path="/countries/:name" component={IndividualCountryContainer} />
