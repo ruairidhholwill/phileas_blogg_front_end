@@ -11,10 +11,10 @@ class CountryContainer extends Component {
     }
 
     componentDidMount() {
-        const url = 'https://restcountries.eu/rest/v2/all?fields=name;capital'
+        const url = 'http://localhost:8080/countries'
         fetch(url)
           .then(res => res.json())
-          .then(countries => this.setState({countries: countries}))
+          .then(countries => this.setState({countries: countries._embedded.countries}))
           .catch(err => console.error)
     }
 
