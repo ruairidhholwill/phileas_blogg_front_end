@@ -5,6 +5,7 @@ import UserForm from "../Users/Components/UserForm"
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ReviewForm from "../Reviews/Components/ReviewForm";
 import IndividualReviewBox from "../Reviews/Containers/IndividualReviewBox"
+import IndividualUserBox from "../Users/Containers/IndividualUserBox"
 import ErrorPage from './ErrorPage'
 import HomeNavBar from "./HomeNavBar"
 import UserBox from "../Users/Containers/UserBox"
@@ -108,7 +109,6 @@ class Main extends Component {
       <Router>
         <main className="layout">
           <header>
-            {/* <a href="/"><img alt="balloon" id="logo" src="/images/balloon.png" path="/" /></a> */}
             <NavBar className="main-nav" />
           </header>
           <HomeNavBar className="home-nav" />
@@ -120,6 +120,7 @@ class Main extends Component {
             <Route path="/add-user" render={() => <UserForm onFormSubmit={this.postUserData} />} />
             <Route path="/add-review" render={() => <ReviewForm countries={this.state.countries} onReviewSubmit={this.postReviewData} />} />
             <Route path="/reviews/:id" component={IndividualReviewBox} />
+            <Route path="/users/:id" component={IndividualUserBox} />
             <Route component={ErrorPage} />
           </Switch>
         </main>
