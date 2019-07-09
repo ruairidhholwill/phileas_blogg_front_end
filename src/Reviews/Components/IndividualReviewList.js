@@ -1,12 +1,20 @@
 import React, { Component } from "react";
 import IndividualReview from "./IndividualReview";
+import EditReviewForm from "./EditReviewForm.js"
 
 class IndividualReviewList extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      mode: 'view'
+      mode: 'view',
+      reviewInEdit: ''
     }
+
+    this.handleEditMode = this.handleEditMode.bind(this);
+  }
+
+  handleEditMode(id) {
+    this.setState({mode: 'edit', reviewInEdit: id})
   }
 
   render() {
@@ -22,7 +30,7 @@ class IndividualReviewList extends Component {
           text={review.text} 
           country={review.country} 
           id={review.id} 
-          handleEdit={this.props.handleEdit}
+          handleEditMode={this.handleEditMode}
           handleDelete={this.props.handleDelete}
         />
 
@@ -36,10 +44,29 @@ class IndividualReviewList extends Component {
       )
 
     }
-    // else {
-    //   <EditReviewForm/>
+    else if (this.state.mode === 'edit') {
+      const editReviewForm = this.props.data.map((review) => {
+        return (
+          <EditReviewForm
+              date={review.date} 
+              rating={review.rating} 
+              title={review.title} 
+              key={review.id} 
+              text={review.text} 
+              country={review.country} 
+              id={review.id} 
+          />
+        )
+      })
 
-    // }
+      return (
+        <div>
+          {editReviewForm}
+        </div>
+      )
+    
+
+    }
   }
 }
 
