@@ -1,4 +1,5 @@
 import React,{Component} from "react";
+import ReviewList from '../../Reviews/Components/ReviewList'
 
 class IndividualUser extends Component{
 
@@ -8,9 +9,8 @@ render(){
           <h4>Name: {this.props.name}</h4>
           <p>Username: {this.props.username}</p>
           <p>Level: {this.props.level}</p>
-          <p>Reviews: {this.props.reviews.forEach(review => {         
-              console.log( review.title)
-          })}</p>
+          <h3>Reviews:</h3>
+          <ReviewList data={this.props.reviews}/>
         </div>
     );
   }
