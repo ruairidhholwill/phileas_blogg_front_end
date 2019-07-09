@@ -10,8 +10,9 @@ class ReviewBox extends Component {
       countries: [],
       reviews: [],
       reviewedCountries: [],
-      searchText: ''
+      searchedReviews: []
     };
+    this.handleChange = this.handleChange.bind(this)
   }
 
   componentDidMount() {
@@ -33,6 +34,18 @@ class ReviewBox extends Component {
       .then(reviewedCountry => this.setState({ reviewedCountries: reviewedCountry._embedded.countries }))
       .catch(err => console.error)
   }
+
+  handleChange(event){
+    console.log(event.target.value)
+    let reviewsUrl = `http://localhost:8080/reviews/contains/${event.target.value}`
+    fetch(reviewsUrl)
+      .then(res => res.json())
+      .then(reviewData => this.setState({ searchedReviews: reviewData }))
+      .catch(err => console.err)
+      .then(console.log(this.state.searchedReviews))
+      // debugger
+  }
+
   render() {
     return (
       <div>
