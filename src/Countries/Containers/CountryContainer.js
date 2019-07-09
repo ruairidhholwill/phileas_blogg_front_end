@@ -11,10 +11,10 @@ class CountryContainer extends Component {
     }
 
     componentDidMount() {
-        const url = 'http://localhost:8080/countries'
+        const url = 'http://localhost:8080/countries/all'
         fetch(url)
           .then(res => res.json())
-          .then(countries => this.setState({countries: countries._embedded.countries}))
+          .then(countries => this.setState({countries: countries}))
           .catch(err => console.error)
     }
 
