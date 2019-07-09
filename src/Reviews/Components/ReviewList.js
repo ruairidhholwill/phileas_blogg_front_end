@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Review from "./Review";
+import "./ReviewList.css"
 
 class ReviewList extends Component {
   render() {
