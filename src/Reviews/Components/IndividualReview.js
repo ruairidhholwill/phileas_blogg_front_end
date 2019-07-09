@@ -1,10 +1,12 @@
 import React,{Component} from "react";
 
 class IndividualReview extends Component{
+    
     constructor(props){
       super(props)
 
       this.handleEditClick = this.handleEditClick.bind(this);
+      this.handleClick = this.handleClick.bind(this)
     }
 
 
