@@ -5,6 +5,7 @@ import UserForm from "../Users/Components/UserForm"
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ReviewForm from "../Reviews/Components/ReviewForm";
 import IndividualReviewBox from "../Reviews/Containers/IndividualReviewBox"
+import IndividualUserBox from "../Users/Containers/IndividualUserBox"
 import ErrorPage from './ErrorPage'
 import HomeNavBar from "./HomeNavBar"
 import UserBox from "../Users/Containers/UserBox"

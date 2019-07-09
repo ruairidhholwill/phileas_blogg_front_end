@@ -3,19 +3,19 @@ import IndividualReview from "./IndividualReview";
 
 class IndividualReviewList extends Component {
   render() {
-      const review = this.props.data.map((review, index) => {
+    const review = this.props.data.map((review, index) => {
       return (
 
-        <IndividualReview date={review.date} rating={review.rating} title={review.title} key={review.id} text={review.text} country={review.country} id={review.id}></IndividualReview>
+        <IndividualReview date={review.date} rating={review.rating} title={review.title} key={index} text={review.text} country={review.country} id={review.id}></IndividualReview>
 
       );
-  })
+    })
 
-  return (
-    <div>
-      {review}
-    </div>
-  )
+    return (
+      <div>
+        {review}
+      </div>
+    )
   }
 }
 
