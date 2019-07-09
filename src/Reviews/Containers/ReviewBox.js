@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import ReviewList from "../Components/ReviewList"
 
 
@@ -34,9 +34,12 @@ class ReviewBox extends Component {
   }
   render() {
     return (
+      <div>
+      <input type="text">search...</input>
       <main className="review-box">
         <ReviewList data={this.state.reviews}/>
       </main>
+      </div>
     )
   }
   
