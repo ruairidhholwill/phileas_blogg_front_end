@@ -1,15 +1,19 @@
-import React, {Component} from "react";
-import Home from "./Home";
+import React, { Component } from "react";
 import NavBar from "./NavBar";
 import './Main.css'
 import UserForm from "../Users/Components/UserForm"
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ReviewForm from "../Reviews/Components/ReviewForm";
 import IndividualReviewBox from "../Reviews/Containers/IndividualReviewBox"
 import ErrorPage from './ErrorPage'
+import HomeNavBar from "./HomeNavBar"
+import UserBox from "../Users/Containers/UserBox"
+import CountryContainer from "../Countries/Containers/CountryContainer"
+import ReviewBox from "../Reviews/Containers/ReviewBox";
+import Home from "./Home"
 
 
-class Main extends Component{
+class Main extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -33,21 +37,21 @@ class Main extends Component{
 
     let topUsersURL = "http://localhost:8080/users/ranking"
     fetch(topUsersURL)
-    .then(res => res.json())
-    .then(topUserData => this.setState({ topUsers: topUserData }))
-    .catch(err => console.err)
+      .then(res => res.json())
+      .then(topUserData => this.setState({ topUsers: topUserData }))
+      .catch(err => console.err)
 
     let reviewedCountriesUrl = 'http://localhost:8080/countries'
-      fetch(reviewedCountriesUrl)
-        .then(res => res.json())
-        .then(reviewedCountry => this.setState({ reviewedCountries: reviewedCountry._embedded.countries }))
-        .catch(err => console.error)
+    fetch(reviewedCountriesUrl)
+      .then(res => res.json())
+      .then(reviewedCountry => this.setState({ reviewedCountries: reviewedCountry._embedded.countries }))
+      .catch(err => console.error)
 
     let countriesUrl = 'https://restcountries.eu/rest/v2/all?fields=name'
-      fetch(countriesUrl)
-        .then(res => res.json())
-        .then(countries => this.setState({ countries: countries }))
-        .catch(err => console.error)
+    fetch(countriesUrl)
+      .then(res => res.json())
+      .then(countries => this.setState({ countries: countries }))
+      .catch(err => console.error)
   }
 
   postUserData(data) {
@@ -61,7 +65,7 @@ class Main extends Component{
     })
       .then(res => res.json())
       .then(userData => this.setState(prevState => {
-        return {users: [...prevState.users, userData]}
+        return { users: [...prevState.users, userData] }
       }))
   }
 
@@ -85,43 +89,44 @@ class Main extends Component{
     }
 
     fetch('http://localhost:8080/reviews', {
-        method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-      })
-        .then(res => res.json())
-        .then(reviewData => this.setState(prevState => {
-          return { reviews: [...prevState.reviews, reviewData] }
-        }))
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then(res => res.json())
+      .then(reviewData => this.setState(prevState => {
+        return { reviews: [...prevState.reviews, reviewData] }
+      }))
   }
-  
 
-  render(){
-    return(
+
+  render() {
+    return (
       <Router>
-          <main className="layout">
+        <main className="layout">
           <header>
-          <a href="/"><img alt="balloon" id="logo" src="/images/balloon.png" path="/"/></a>
-            <NavBar className="main-nav"/>
+            {/* <a href="/"><img alt="balloon" id="logo" src="/images/balloon.png" path="/" /></a> */}
+            <NavBar className="main-nav" />
           </header>
-              <Switch>
-                  <Route exact path="/" component={Home}/>
-                  <Route path="/add-user" render={() => <UserForm onFormSubmit = {this.postUserData}/>}/>
-                  <Route path="/add-user" component={UserForm}/>
-                  <Route path="/add-review" render={() => <ReviewForm countries = {this.state.countries} onReviewSubmit = {this.postReviewData}/>}/>
-                  {/* NEED TO PASS IN ID!! */}
-                  {/* <Route path={"/review/" + this.state.reviews.id}  component={IndividualReviewBox} /> */}
-                  <Route path={window.location.pathname} component={IndividualReviewBox} />
-                  <Route component={ErrorPage} />
-              </Switch>
-          </main>
+          <HomeNavBar className="home-nav" />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/users" component={UserBox} />
+            <Route exact path="/reviews" component={ReviewBox} />
+            <Route exact path="/countries" component={CountryContainer} />
+            <Route path="/add-user" render={() => <UserForm onFormSubmit={this.postUserData} />} />
+            <Route path="/add-review" render={() => <ReviewForm countries={this.state.countries} onReviewSubmit={this.postReviewData} />} />
+            <Route path="/reviews/:id" component={IndividualReviewBox} />
+            <Route component={ErrorPage} />
+          </Switch>
+        </main>
       </Router>
     )
   };
-  
+
 }
 
 export default Main
