@@ -6,7 +6,7 @@ class IndividualReviewBox extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            country: []
+            reviewData: []
         };
 
         this.handleDelete = this.handleDelete.bind(this);
@@ -17,7 +17,7 @@ class IndividualReviewBox extends Component {
         let url = `http://localhost:8080/reviews/${this.props.match.params.id}`
         fetch(url)
             .then(res => res.json())
-            .then(countryData => this.setState({ country: countryData }))
+            .then(reviewData => this.setState({ reviewData: reviewData }))
             .catch(err => console.err)
     }
 
@@ -53,7 +53,7 @@ class IndividualReviewBox extends Component {
     render() {
         return (
             <div className="review-box">
-                <IndividualReviewList data={this.state.country} handleDelete={this.handleDelete}/>
+                <IndividualReviewList data={this.state.reviewData} handleDelete={this.handleDelete}/>
             </div>
         )
     }
