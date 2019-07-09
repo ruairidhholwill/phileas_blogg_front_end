@@ -23,7 +23,7 @@ class Main extends Component {
       topUser: [],
       countries: [],
       reviewedCountries: []
-    }
+     }
 
     this.postUserData = this.postUserData.bind(this);
     this.postReviewData = this.postReviewData.bind(this);
