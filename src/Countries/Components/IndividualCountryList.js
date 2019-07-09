@@ -4,7 +4,7 @@ import ReviewList from '../../Reviews/Components/ReviewList'
 
 class IndividualCountryList extends Component {
     render(){
-        // console.log("Country", this.props.countryData)
+        console.log("Country", this.props.countryData)
         console.log("reviews", this.props.reviewData)
         const country = this.props.countryData.map((country, index) => {
             return (
@@ -18,7 +18,7 @@ class IndividualCountryList extends Component {
         // const reviews = this.props.reviewData.map((review, index) => {
         //     return (
 
-        //         <ReviewList review={review.date} 
+        //         <IndividualCountry review={review.date} 
         //         rating={review.rating} 
         //         title={review.title} 
         //         key={index} 
