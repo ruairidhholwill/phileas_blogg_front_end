@@ -28,11 +28,10 @@ class ReviewForm extends Component{
 
     handleSubmit(event){
       event.preventDefault();
-      this.setFormattedDate()
       const title = this.state.title.trim();
       const rating = this.state.rating;
 
-      const date = this.state.date;
+      const date = this.setFormattedDate();
       const text = this.state.text.trim();
       const country = this.state.country
       const user = this.state.user
@@ -86,12 +85,9 @@ class ReviewForm extends Component{
   setFormattedDate() {
     let monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"];
-    
-      let date = new Date();
-
-
+    let date = new Date();
     let formattedDate = date.getDate() + " " + monthNames[(date.getMonth())] + " " +  date.getFullYear();
-    this.setState({date: formattedDate})
+    return formattedDate;
   }
 
 
