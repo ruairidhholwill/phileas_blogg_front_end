@@ -119,7 +119,6 @@ class Main extends Component {
             <Route exact path="/" component={Home} />
             <Route exact path="/users" component={UserBox} />
             <Route exact path="/reviews" component={ReviewBox} />
-            <Route exact path="/countries" component={CountryContainer} />
             <Route path="/add-user" render={() => <UserForm onFormSubmit={this.postUserData} />} />
             <Route path="/add-review" render={() => <ReviewForm countries={this.state.countries} users={this.state.users} onReviewSubmit={this.postReviewData} />} />
             <Route path="/reviews/:id" component={IndividualReviewBox} />
