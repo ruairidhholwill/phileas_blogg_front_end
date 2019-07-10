@@ -55,6 +55,7 @@ class IndividualReviewList extends Component {
               text={review.text} 
               country={review.country} 
               id={review.id} 
+              handleEditSubmit={this.props.handleEditSubmit}
           />
         )
       })

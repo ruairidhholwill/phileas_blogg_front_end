@@ -67,7 +67,7 @@ class IndividualReviewBox extends Component {
     render() {
         return (
             <div className="review-box">
-                <IndividualReviewList data={this.state.reviewData} handleDelete={this.handleDelete}/>
+                <IndividualReviewList data={this.state.reviewData} handleDelete={this.handleDelete} handleEditSubmit={this.handleEditSubmit}/>
                 {this.renderRedirect()}
             </div>
         )

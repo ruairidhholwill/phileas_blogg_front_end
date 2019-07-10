@@ -5,11 +5,11 @@ class EditReviewForm extends Component {
     constructor(props){
         super(props);
         this.state = {
-          title: '',
-          rating:'',
-          date:'',
-          text:'',
-          country: '',
+          title: props.title,
+          rating: props.rating ,
+          date: props.date,
+          text: props.text,
+          country: props.country,
           countryNames: []
         };
     
@@ -72,14 +72,7 @@ class EditReviewForm extends Component {
     
       generateOptions(){
         const options = this.state.countryNames.map((country, index) => {
-            // debugger;
-            if (country.name === this.props.country) {
-                
-                return <option selected="selected" value={country.name} key={index} >{country.name}</option>
-            }
-            else {
-                return <option value={country.name} key={index}>{country.name}</option>
-            }
+            return <option value={country.name} key={index}>{country.name}</option>
         })
         return options
       }
@@ -91,31 +84,30 @@ class EditReviewForm extends Component {
         <main className="review-form-main">
         <h2>Edit review of {this.props.country}:</h2>
           <form className="review-form" onSubmit={this.handleSubmit}>
-          <label for="country-selector">Select country: </label>
-            <select  id="country-selector" onChange={this.handleSelectChange}>
-            <option disabled value="default">Choose a country...</option>
-            {this.generateOptions()}
-            </select>
+            <label id="country-selector">Select country: </label>
+                <select  id="country-selector" value={this.props.country} onChange={this.handleSelectChange}>
+                {this.generateOptions()}
+                </select>
           
-          <label for="title">Title: </label>
-            <input id="title" type="text" placeholder="Write title" value={this.state.title} onChange={this.handleTitleChange}/>
+            <label id="title">Title: </label>
+                <input id="title" type="text" placeholder="Write title" value={this.state.title} onChange={this.handleTitleChange}/>
           
-          <label for="rating"> Rating: </label>
-            <div id="rating" className="rating-stars" onChange={this.handleRatingChange}>
-                <input type="radio" name="rating" value = '1' />
-                <input type="radio" name="rating" value = '2' />
-                <input type="radio" name="rating" value = '3' />
-                <input type="radio" name="rating" value = '4' />
-                <input type="radio" name="rating" value = '5' />
-            </div>
+            <label id="rating"> Rating: </label>
+                <div id="rating" className="rating-stars" onChange={this.handleRatingChange}>
+                    <input type="radio" name="rating" value = '1' />
+                    <input type="radio" name="rating" value = '2' />
+                    <input type="radio" name="rating" value = '3' />
+                    <input type="radio" name="rating" value = '4' />
+                    <input type="radio" name="rating" value = '5' />
+                </div>
           
-          <label for="date">Select date: </label>
-            <input id="date" type="date" value={this.state.date} onChange={this.handleDateChange}/>
-          
-          <label for="text">Write review: </label>
-            <textarea id="text" placeholder="Write review" value={this.state.text} onChange={this.handleTextChange}></textarea>
-          
-            <input type="submit" value="Write Review"/>
+            <label id="date">Select date: </label>
+                <input id="date" type="date" value={this.state.date} onChange={this.handleDateChange}/>
+            
+            <label id="text">Write review: </label>
+                <textarea id="text" placeholder="Write review" value={this.state.text} onChange={this.handleTextChange}></textarea>
+            
+                <input type="submit" value="Write Review"/>
           </form>
         </main>
     
