@@ -23,59 +23,67 @@ class EditReviewForm extends Component {
     
     
     
+    }
+
+    componentDidMount() {
+        let countriesUrl = 'https://restcountries.eu/rest/v2/all?fields=name'
+            fetch(countriesUrl)
+                .then(res => res.json())
+                .then(countryNames => this.setState({ countryNames: countryNames}))
+                .catch(err => console.error)    
+    }
+
+    handleSubmit(event){
+        event.preventDefault();
+        const title = this.state.title.trim();
+        const rating = this.state.rating;
+        const date = this.setFormattedDate()
+        const text = this.state.text.trim();
+        const country = this.state.country
+
+        if (!title || !rating || !date || !text || !country){
+        return
         }
 
-        componentDidMount() {
-            let countriesUrl = 'https://restcountries.eu/rest/v2/all?fields=name'
-                fetch(countriesUrl)
-                    .then(res => res.json())
-                    .then(countryNames => this.setState({ countryNames: countryNames}))
-                    .catch(err => console.error)    
-        }
-    
-        handleSubmit(event){
-          event.preventDefault();
-          const title = this.state.title.trim();
-          const rating = this.state.rating;
-          const date = this.state.date.trim();
-          const text = this.state.text.trim();
-          const country = this.state.country
-    
-          if (!title || !rating || !date || !text || !country){
-            return
-          }
-    
-          this.props.handleEditSubmit({title: title, rating: rating, date: date, text: text, country: country})
-          this.setState({title: '', rating: '', date: '', text: '', country: ''});
-      }
-    
-      handleTitleChange(event){
-        this.setState({title: event.target.value})
-      }
-    
-      handleRatingChange(event){
-        this.setState({rating: event.target.value})
-    
-      }
-    
-      handleDateChange(event){
-        this.setState({date: event.target.value})
-      }
-    
-      handleTextChange(event){
-        this.setState({text: event.target.value})
-      }
-    
-      handleSelectChange(event){
-        this.setState({country: event.target.value})
-      }
-    
-      generateOptions(){
-        const options = this.state.countryNames.map((country, index) => {
-            return <option value={country.name} key={index}>{country.name}</option>
-        })
-        return options
-      }
+        this.props.handleEditSubmit(this.props.id, {title: title, rating: rating, date: date, text: text, country: country})
+        this.setState({title: '', rating: '', date: '', text: '', country: ''});
+    }
+
+    handleTitleChange(event){
+    this.setState({title: event.target.value})
+    }
+
+    handleRatingChange(event){
+    this.setState({rating: event.target.value})
+
+    }
+
+    handleDateChange(event){
+    this.setState({date: event.target.value})
+    }
+
+    handleTextChange(event){
+    this.setState({text: event.target.value})
+    }
+
+    handleSelectChange(event){
+    this.setState({country: event.target.value})
+    }
+
+    generateOptions(){
+    const options = this.state.countryNames.map((country, index) => {
+        return <option value={country.name} key={index}>{country.name}</option>
+    })
+    return options
+    }
+
+    setFormattedDate() {
+    let monthNames = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"];
+    let date = new Date();
+    let formattedDate = date.getDate() + " " + monthNames[(date.getMonth())] + " " +  date.getFullYear();
+    return formattedDate;
+    }
     
     
     
@@ -101,8 +109,7 @@ class EditReviewForm extends Component {
                     <input type="radio" name="rating" value = '5' />
                 </div>
           
-            <label id="date">Select date: </label>
-                <input id="date" type="date" value={this.state.date} onChange={this.handleDateChange}/>
+            <input type="hidden"  value={this.state.date} onChange={this.handleDateChange}/>
             
             <label id="text">Write review: </label>
                 <textarea id="text" placeholder="Write review" value={this.state.text} onChange={this.handleTextChange}></textarea>
