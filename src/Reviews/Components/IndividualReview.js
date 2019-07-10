@@ -6,11 +6,11 @@ class IndividualReview extends Component{
       super(props)
 
       this.handleEditClick = this.handleEditClick.bind(this);
-      this.handleClick = this.handleClick.bind(this)
+      this.handleDeleteClick = this.handleDeleteClick.bind(this)
     }
 
 
-  handleClick() {
+  handleDeleteClick() {
     this.props.handleDelete(this.props.id)
   }
 
@@ -28,7 +28,7 @@ class IndividualReview extends Component{
             <p>Date: {this.props.date}</p>
             <p>Country: {this.props.country}</p>
           </div>
-          <input type="button" value="Delete" onClick={this.handleClick}></input>
+          <input type="button" value="Delete" onClick={this.handleDeleteClick}></input>
           <input type="button" value="Edit" onClick={this.handleEditClick}></input>
         </section>
     );
