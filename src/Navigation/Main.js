@@ -24,7 +24,8 @@ class Main extends Component {
       topUsers: [],
       countries: [],
       reviewedCountries: [],
-      redirect: false
+      reviewRedirect: false,
+      userRedirect: false
     }
 
     this.postUserData = this.postUserData.bind(this);
@@ -94,6 +95,7 @@ class Main extends Component {
       .then(userData => this.setState(prevState => {
         return { users: [...prevState.users, userData] }
       }))
+      .then(this.setUserRedirect)
   }
 
 
@@ -129,25 +131,38 @@ class Main extends Component {
       .then(reviewData => this.setState(prevState => {
         return { displayReviews: [...prevState.reviews, reviewData] }
       }))
-      .then(this.setRedirect)
+      .then(this.setReviewRedirect)
   }
 
-  setRedirect = () => {
+  setReviewRedirect = () => {
     this.setState({
-      redirect: true
+      reviewRedirect: true
     })
   }
 
-  renderRedirect = () => {
-    if (this.state.redirect) {
+  renderReviewRedirect = () => {
+    if (this.state.reviewRedirect) {
       this.setState({
-        redirect: false
+        reviewRedirect: false
       })
       return <Redirect to='/reviews' />
     }
-
   }
 
+  setUserRedirect = () => {
+      this.setState({
+        userRedirect: true
+      })
+    }
+  
+  renderUserRedirect = () => {
+      if (this.state.userRedirect) {
+        this.setState({
+          userRedirect: false
+        })
+        return <Redirect to='/users' />
+      }
+    }
 
   render() {
     return (
@@ -168,12 +183,13 @@ class Main extends Component {
             <Route path="/users/:id" component={IndividualUserBox} />
             <Route component={ErrorPage} />
           </Switch>
-          {this.renderRedirect()}
+          {this.renderReviewRedirect()}
+          {this.renderUserRedirect()}
         </main>
       </Router>
     )
-  };
-
+  }
 }
+
 
 export default Main
