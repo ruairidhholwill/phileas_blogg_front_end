@@ -1,7 +1,5 @@
 import React,{Component} from "react";
 import './ReviewItem.css';
-import {Link} from 'react-router-dom'
-
 
 class Review extends Component{
 
@@ -13,6 +11,7 @@ let reviewContent = this.props.text;
 if(this.props.text.length > 130){
 
   let maxLength = 130;
+
   let shorterReview = reviewContent.substr(0, maxLength);
   shorterReview = shorterReview.substr(0, Math.min(shorterReview.length, shorterReview.lastIndexOf(" ")))
 

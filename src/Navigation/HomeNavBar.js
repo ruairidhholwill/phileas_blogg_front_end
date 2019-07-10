@@ -6,7 +6,6 @@ const HomeNavBar = () =>(
   <ul className="home-nav-bar">
     <li><Link className="main-nav-list-item" to="/users">Users</Link></li>
     <li><Link className="main-nav-list-item" to="/reviews">Reviews</Link></li>
-    <li><Link className="main-nav-list-item" to="/countries">Countries</Link></li>
   </ul>
 )
 

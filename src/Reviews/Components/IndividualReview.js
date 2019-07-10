@@ -1,10 +1,12 @@
 import React,{Component} from "react";
 
 class IndividualReview extends Component{
+    
     constructor(props){
       super(props)
 
-      this.handleClick = this.handleClick.bind(this);
+      this.handleEditClick = this.handleEditClick.bind(this);
+      this.handleClick = this.handleClick.bind(this)
     }
 
 
@@ -13,7 +15,7 @@ class IndividualReview extends Component{
   }
 
   handleEditClick() {
-    this.props.handleEdit(this.props)
+    this.props.handleEditMode(this.props.id)
   }
 
   render(){
@@ -31,6 +33,7 @@ class IndividualReview extends Component{
         </section>
     );
   }
+
 }
 
 export default IndividualReview;
