@@ -9,8 +9,10 @@ class ReviewBox extends Component {
     this.state = {
       countries: [],
       reviews: [],
-      reviewedCountries: []
+      reviewedCountries: [],
+      searchedReviews: []
     };
+    this.handleChange = this.handleChange.bind(this)
   }
 
   componentDidMount() {
@@ -32,14 +34,36 @@ class ReviewBox extends Component {
       .then(reviewedCountry => this.setState({ reviewedCountries: reviewedCountry._embedded.countries }))
       .catch(err => console.error)
   }
+
+  handleChange(event) {
+    if (event.target.value.length > 0) {
+      let reviewsUrl = `http://localhost:8080/reviews/contains/${event.target.value}`
+      fetch(reviewsUrl)
+        .then(res => res.json())
+        .then(reviewData => this.setState({ reviews: reviewData }))
+        .catch(err => console.err)
+    } else if (event.target.value.length === 0) {
+      let reviewsUrl = `http://localhost:8080/reviews/all`
+      fetch(reviewsUrl)
+        .then(res => res.json())
+        .then(reviewData => this.setState({ reviews: reviewData }))
+        .catch(err => console.err)
+    }
+  }
+
   render() {
     return (
-      <main className="review-box">
-        <ReviewList data={this.state.reviews}/>
-      </main>
+      <div>
+        <div>
+          <input id="search-bar" type="input" placeholder="Search.." onChange={this.handleChange}></input>
+        </div>
+        <main className="review-box">
+          <ReviewList data={this.state.reviews} />
+        </main>
+      </div>
     )
   }
-  
+
 }
 
 
