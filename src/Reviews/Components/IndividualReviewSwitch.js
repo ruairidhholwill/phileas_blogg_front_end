@@ -29,7 +29,8 @@ class IndividualReviewList extends Component {
           key={review.id} 
           text={review.text} 
           country={review.country} 
-          id={review.id} 
+          id={review.id}
+          user={review.user}
           handleEditMode={this.handleEditMode}
           handleDelete={this.props.handleDelete}
         />
