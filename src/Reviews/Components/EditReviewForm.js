@@ -26,18 +26,11 @@ class EditReviewForm extends Component {
         }
 
         componentDidMount() {
-            let url = `http://localhost:8080/reviews/${this.props.id}`
-                fetch(url)
-                    .then(res => res.json())
-                    .then(reviewData => this.setState({ reviewData: reviewData }))
-                    .catch(err => console.err)
-
             let countriesUrl = 'https://restcountries.eu/rest/v2/all?fields=name'
                 fetch(countriesUrl)
                     .then(res => res.json())
                     .then(countryNames => this.setState({ countryNames: countryNames}))
-                    .catch(err => console.error)
-            
+                    .catch(err => console.error)    
         }
     
         handleSubmit(event){
@@ -79,7 +72,14 @@ class EditReviewForm extends Component {
     
       generateOptions(){
         const options = this.state.countryNames.map((country, index) => {
-          return <option value={country.name} key={index}>{country.name}</option>
+            // debugger;
+            if (country.name === this.props.country) {
+                
+                return <option selected="selected" value={country.name} key={index} >{country.name}</option>
+            }
+            else {
+                return <option value={country.name} key={index}>{country.name}</option>
+            }
         })
         return options
       }
@@ -89,10 +89,10 @@ class EditReviewForm extends Component {
     render(){
       return(
         <main className="review-form-main">
-        <h2>Edit review:</h2>
+        <h2>Edit review of {this.props.country}:</h2>
           <form className="review-form" onSubmit={this.handleSubmit}>
           <label for="country-selector">Select country: </label>
-            <select  id="country-selector" defaultValue="default" onChange={this.handleSelectChange}>
+            <select  id="country-selector" onChange={this.handleSelectChange}>
             <option disabled value="default">Choose a country...</option>
             {this.generateOptions()}
             </select>
