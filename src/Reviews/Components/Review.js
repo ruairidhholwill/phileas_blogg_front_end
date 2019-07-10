@@ -27,7 +27,7 @@ class Review extends Component{
             <p>Country: {this.props.country}</p>
             <p>Rating: {this.props.rating}</p>
             <p class="post-date">Posted: {this.props.date}</p>
-            <p>by {this.props.user.username}</p>
+            {/* <p>by {this.props.user.username}</p> */}
 
       </div>
     );

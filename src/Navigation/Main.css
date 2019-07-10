@@ -33,6 +33,7 @@ header {
     font-family: 'Verdana';
     font-weight:bold;
     transition: 0.5s;
+  
 }
 
 .main-nav-list-item:hover{

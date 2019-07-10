@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Merriweather&display=swap');
-
-.review{
+.review-content-full{
   padding: 1em;
   b-webkit-box-shadow: 21px 10px 31px -4px rgba(0,0,0,0.17);
   -moz-box-shadow: 21px 10px 31px -4px rgba(0,0,0,0.17);
@@ -10,25 +8,16 @@
   font-family: Merriweather, Arial, "Helvetica Neue", Helvetica, sans-serif;
   color: #424242;
   transition: 0.3s;
-  }
-
-.review:hover{
-position: relative;
-top:3px;
-background-color: #dedede;
+  margin: 1vw 5vw 5vw 5vw;
+  line-height:2vw;
 }
 
-.review-title a{
-  color:#424242 ;
-}
-
-.review-content{
-  line-height: 1.6em;
-  
-}
-
-.post-date{
-  font-size: 0.8em;
+.post-date-individual{
+  font-size: 1.5vw;
   text-align: right;
   font-style: italic;
+}
+
+.country, .rating{
+  font-weight: bold;
 }

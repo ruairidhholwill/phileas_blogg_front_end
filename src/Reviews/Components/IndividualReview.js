@@ -1,7 +1,8 @@
-import React,{Component} from "react";
+import React,{Component, Fragment} from "react";
+import './IndividualReview.css';
 
 class IndividualReview extends Component{
-    
+
     constructor(props){
       super(props)
 
@@ -20,18 +21,21 @@ class IndividualReview extends Component{
 
   render(){
     return(
-        <section className="review-container">
-          <div className="review-content">
-            <h4>Title: {this.props.title}</h4>
+      <Fragment>
+      <h4>{this.props.title}</h4>
+          <div className="review-content-full">
+            <p class="country">Country: {this.props.country}</p>
             <p>Text: {this.props.text}</p>
             <p>Rating: {this.props.rating}</p>
             <p>Date: {this.props.date}</p>
             <p>Country: {this.props.country}</p>
             {/* <p>by {this.props.user.username}</p> */}
           </div>
+          <div className="buttons-box">
           <input type="button" value="Delete" onClick={this.handleDeleteClick}></input>
           <input type="button" value="Edit" onClick={this.handleEditClick}></input>
-        </section>
+        </div>
+    </Fragment>
     );
   }
 
