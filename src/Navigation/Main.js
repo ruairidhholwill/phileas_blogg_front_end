@@ -9,7 +9,6 @@ import IndividualUserBox from "../Users/Containers/IndividualUserBox"
 import ErrorPage from './ErrorPage'
 import HomeNavBar from "./HomeNavBar"
 import UserBox from "../Users/Containers/UserBox"
-import CountryContainer from "../Countries/Containers/CountryContainer"
 import ReviewBox from "../Reviews/Containers/ReviewBox";
 import Home from "./Home"
 
