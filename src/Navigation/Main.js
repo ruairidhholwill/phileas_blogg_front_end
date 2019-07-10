@@ -21,7 +21,7 @@ class Main extends Component {
       users: [],
       reviews: [],
       displayReviews: [],
-      topUser: [],
+      topUsers: [],
       countries: [],
       reviewedCountries: [],
       redirect: false
@@ -160,7 +160,7 @@ class Main extends Component {
           <HomeNavBar className="home-nav" />
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/users" component={UserBox} />
+            <Route exact path="/users" render={() => <UserBox topUsers={this.state.topUsers} /> } />
             <Route exact path="/reviews" render={() => <ReviewBox reviews={this.state.displayReviews} />} />
             <Route path="/add-user" render={() => <UserForm onFormSubmit={this.postUserData} />} />
             <Route path="/add-review" render={() => <ReviewForm countries={this.state.countries} users={this.state.users} onReviewSubmit={this.postReviewData} />} />

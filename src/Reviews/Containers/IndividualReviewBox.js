@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import IndividualReviewList from '../Components/IndividualReviewList'
+import IndividualReviewList from '../Components/IndividualReviewSwitch'
 import { Redirect } from 'react-router-dom'
 
 class IndividualReviewBox extends Component {
