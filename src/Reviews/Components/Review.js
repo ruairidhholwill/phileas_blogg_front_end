@@ -10,7 +10,7 @@ class Review extends Component{
 render(){
 let reviewContent = this.props.text;
 
-if(this.props.text.length > 131){
+if(this.props.text.length > 130){
 
   let maxLength = 130;
   let shorterReview = reviewContent.substr(0, maxLength);
