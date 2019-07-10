@@ -1,5 +1,5 @@
 import React,{Component} from "react";
-import ReviewList from '../../Reviews/Components/ReviewList'
+import ReviewBox from '../../Reviews/Containers/ReviewBox'
 
 class IndividualUser extends Component{
 
@@ -10,7 +10,7 @@ render(){
           <p>Username: {this.props.username}</p>
           <p>Level: {this.props.level}</p>
           <h3>Reviews:</h3>
-          <ReviewList data={this.props.reviews}/>
+          <ReviewBox reviews={this.props.reviews}/>
         </div>
     );
   }

@@ -5,12 +5,11 @@ class EditReviewForm extends Component {
     constructor(props){
         super(props);
         this.state = {
-          id: props.id,
-          title: props.title,
-          rating: props.rating ,
-          date: props.date,
-          text: props.text,
-          country: props.country,
+          title: '',
+          rating: '',
+          date: '',
+          text:  '',
+          country: '',
           countryNames: []
         };
     
@@ -32,11 +31,19 @@ class EditReviewForm extends Component {
                 .then(res => res.json())
                 .then(countryNames => this.setState({ countryNames: countryNames}))
                 .catch(err => console.error)    
+
+        this.setState({
+            id: this.props.id,
+            title: this.props.title,
+            rating: this.props.rating,
+            date: this.props.date,
+            text: this.props.text,
+            country: this.props.country
+        })
     }
 
     handleSubmit(event){
         event.preventDefault();
-        const id = this.state.id
         const title = this.state.title.trim();
         const rating = this.state.rating;
         const date = this.setFormattedDate()
@@ -47,8 +54,20 @@ class EditReviewForm extends Component {
         return
         }
 
-        this.props.handleEditSubmit(this.state.id, {id: id, title: title, rating: rating, date: date, text: text, country: country})
-        this.setState({title: '', rating: '', date: '', text: '', country: ''});
+        this.props.handleEditSubmit({
+                title: title,
+                rating: rating,
+                date: date,
+                text: text,
+                country: country
+            })
+        this.setState({
+            title: '',
+            rating: '',
+            date: '',
+            text: '', 
+            country: ''
+        });
     }
 
     handleTitleChange(event){
@@ -74,12 +93,12 @@ class EditReviewForm extends Component {
 
     generateOptions(){
     const options = this.state.countryNames.map((country, index) => {
-        // if (country.name === this.props.country) {
+        if (country.name === this.state.country) {
+            return <option value={country.name} key={index} selected>{country.name}</option>
+        }
+        else {
             return <option value={country.name} key={index}>{country.name}</option>
-        // }
-        // else {
-        //     return <option value={country.name} key={index}>{country.name}</option>
-        // }
+        }
     })
     return options
     }
@@ -95,7 +114,6 @@ class EditReviewForm extends Component {
     
     
     render(){
-    // debugger;
       return(
           
         <main className="review-form-main">

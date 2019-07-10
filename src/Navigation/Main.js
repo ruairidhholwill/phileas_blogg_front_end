@@ -20,7 +20,8 @@ class Main extends Component {
     this.state = {
       users: [],
       reviews: [],
-      topUser: [],
+      displayReviews: [],
+      topUsers: [],
       countries: [],
       reviewedCountries: [],
       redirect: false
@@ -28,6 +29,7 @@ class Main extends Component {
 
     this.postUserData = this.postUserData.bind(this);
     this.postReviewData = this.postReviewData.bind(this);
+    this.handleSearchChange = this.handleSearchChange.bind(this)
   }
 
   componentDidMount() {
@@ -35,6 +37,12 @@ class Main extends Component {
     fetch(allUsersURL)
       .then(res => res.json())
       .then(userData => this.setState({ users: userData._embedded.users }))
+      .catch(err => console.err)
+
+    let reviewsUrl = "http://localhost:8080/reviews/all"
+    fetch(reviewsUrl)
+      .then(res => res.json())
+      .then(reviewData => this.setState({ reviews: reviewData, displayReviews: reviewData }))
       .catch(err => console.err)
 
     let topUsersURL = "http://localhost:8080/users/ranking"
@@ -50,11 +58,27 @@ class Main extends Component {
       .catch(err => console.error)
 
     let countriesUrl = 'https://restcountries.eu/rest/v2/all?fields=name'
-    fetch(countriesUrl)
-      .then(res => res.json())
-      .then(countries => this.setState({ countries: countries }))
-      .catch(err => console.error)
+      fetch(countriesUrl)
+        .then(res => res.json())
+        .then(countries => this.setState({ countries: countries }))
+        .catch(err => console.error)
+  }
 
+
+  handleSearchChange(event) {
+    if (event.target.value.length > 0) {
+      let reviewsUrl = `http://localhost:8080/reviews/contains/${event.target.value}`
+      fetch(reviewsUrl)
+        .then(res => res.json())
+        .then(reviewData => this.setState({ displayReviews: reviewData }))
+        .catch(err => console.err)
+    } else if (event.target.value.length === 0) {
+      let reviewsUrl = `http://localhost:8080/reviews/all`
+      fetch(reviewsUrl)
+        .then(res => res.json())
+        .then(reviewData => this.setState({ displayReviews: reviewData }))
+        .catch(err => console.err)
+    }
   }
 
   postUserData(data) {
@@ -130,13 +154,14 @@ class Main extends Component {
       <Router>
         <main className="layout">
           <header>
-            <NavBar className="main-nav" />
+            <NavBar className="main-nav" handleSearchChange={this.handleSearchChange} />
+
           </header>
           <HomeNavBar className="home-nav" />
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route exact path="/users" component={UserBox} />
-            <Route exact path="/reviews" component={ReviewBox} />
+            <Route exact path="/users" render={() => <UserBox topUsers={this.state.topUsers} /> } />
+            <Route exact path="/reviews" render={() => <ReviewBox reviews={this.state.displayReviews} />} />
             <Route path="/add-user" render={() => <UserForm onFormSubmit={this.postUserData} />} />
             <Route path="/add-review" render={() => <ReviewForm countries={this.state.countries} users={this.state.users} onReviewSubmit={this.postReviewData} />} />
             <Route path="/reviews/:id" component={IndividualReviewBox} />

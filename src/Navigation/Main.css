@@ -36,7 +36,7 @@ header {
 }
 
 .main-nav-list-item:hover{
-  
+
 }
 
 .home-nav-bar {
@@ -44,8 +44,7 @@ header {
     flex-direction: row;
     justify-content: space-around;
     list-style-type: none;
-    margin-left: 25vw;
-    margin-right: 25vw;
+    margin:0vw 25vw 3vw 25vw;
     padding: 1vw 0vw 1vw 0vw;
     background-color:#ededed;
     border-radius: 1.55vw;

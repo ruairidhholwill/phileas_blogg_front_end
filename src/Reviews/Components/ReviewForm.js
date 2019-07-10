@@ -75,7 +75,7 @@ class ReviewForm extends Component{
   }
 
   generateUserOptions(){
-    const options = this.props.users.map((user, index) => {      
+    const options = this.props.users.map((user, index) => {
       return <option value={user._links.self.href} id={index} key={index}>{user.username}</option>
     })
     return options

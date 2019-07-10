@@ -27,6 +27,7 @@ class IndividualReview extends Component{
             <p>Rating: {this.props.rating}</p>
             <p>Date: {this.props.date}</p>
             <p>Country: {this.props.country}</p>
+            {/* <p>by {this.props.user.username}</p> */}
           </div>
           <input type="button" value="Delete" onClick={this.handleDeleteClick}></input>
           <input type="button" value="Edit" onClick={this.handleEditClick}></input>

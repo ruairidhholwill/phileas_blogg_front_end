@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import IndividualReviewList from '../Components/IndividualReviewList'
+import IndividualReviewSwitch from '../Components/IndividualReviewSwitch'
 import { Redirect } from 'react-router-dom'
 
 class IndividualReviewBox extends Component {
@@ -50,8 +50,8 @@ class IndividualReviewBox extends Component {
         }
     }
     
-    handleEditSubmit(id, data) {
-        let url = `http://localhost:8080/reviews/${id}`
+    handleEditSubmit(data) {
+        let url = `http://localhost:8080/reviews/${this.props.match.params.id}`
         fetch(url, {
             method: 'PUT',
             headers: {
@@ -68,7 +68,7 @@ class IndividualReviewBox extends Component {
     render() {
         return (
             <div className="review-box">
-                <IndividualReviewList data={this.state.reviewData} handleDelete={this.handleDelete} handleEditSubmit={this.handleEditSubmit}/>
+                <IndividualReviewSwitch data={this.state.reviewData} handleDelete={this.handleDelete} handleEditSubmit={this.handleEditSubmit}/>
                 {this.renderRedirect()}
             </div>
         )
