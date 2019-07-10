@@ -4,25 +4,17 @@ import "./ReviewList.css"
 
 class ReviewList extends Component {
 
-  // setFormattedDate(reviewDate) {
-  //   let monthNames = ["January", "February", "March", "April", "May", "June",
-  //   "July", "August", "September", "October", "November", "December"];
-
-  //   let date = new Date();
-
-
-  //   let formattedDate = date.getDate() + " " + monthNames[(date.getMonth())] + " " +  date.getFullYear();
-  //   reviewDate = formattedDate
-  // }
-
+  constructor(props){
+    super(props)
+  }
 
   render() {
     const reviewNodes = this.props.data.map((review, index) => {
       return (
         <Review date={review.date} rating={review.rating} title={review.title} key={review.id} value={index} text={review.text} country={review.country} id={review.id} user={review.user}></Review>
 
-      );
-    })
+      )}
+    )
 
     return (
       <div className="review-list">

@@ -1,0 +1,13 @@
+.search-bar-wrapper{
+margin: 2em;
+}
+
+.search-bar{
+  padding: 1vw;
+margin-top: 1vw;
+font-size: 1vw;
+border: none;
+-webkit-box-shadow: 10px 10px 26px -8px rgba(0,0,0,0.19);
+-moz-box-shadow: 10px 10px 26px -8px rgba(0,0,0,0.19);
+box-shadow: 10px 10px 26px -8px rgba(0,0,0,0.19);
+}
