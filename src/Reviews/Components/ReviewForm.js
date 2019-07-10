@@ -30,7 +30,6 @@ class ReviewForm extends Component{
       event.preventDefault();
       const title = this.state.title.trim();
       const rating = this.state.rating;
-
       const date = this.setFormattedDate();
       const text = this.state.text.trim();
       const country = this.state.country

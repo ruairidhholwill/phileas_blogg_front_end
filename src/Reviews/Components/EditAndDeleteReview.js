@@ -1,7 +1,10 @@
 import React, {Component} from 'react';
 
 class EditAndDeleteReview extends Component{
+<<<<<<< HEAD
 
+=======
+>>>>>>> develop
     constructor(props){
         super(props);
         this.state = {
@@ -39,6 +42,7 @@ class EditAndDeleteReview extends Component{
           this.props.onReviewSubmit({title: title, rating: rating, date: date, text: text, country: country})
           this.setState({title: '', rating: '', date: '', text: '', country: ''});
       }
+<<<<<<< HEAD
 
   constructor(props){
     super(props);
@@ -58,6 +62,8 @@ class EditAndDeleteReview extends Component{
     this.handleSubmit = this.handleSubmit.bind(this);
     this.generateCountryOptions = this.generateCountryOptions.bind(this);
 
+=======
+>>>>>>> develop
 
       handleTitleChange(event){
         this.setState({title: event.target.value})
@@ -76,7 +82,10 @@ class EditAndDeleteReview extends Component{
         this.setState({text: event.target.value})
       }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> develop
       handleSelectChange(event){
         console.log(event.target)
         this.setState({country: event.target.value})
@@ -113,6 +122,7 @@ class EditAndDeleteReview extends Component{
 
       )
     }
+<<<<<<< HEAD
 
       this.props.onReviewSubmit({title: title, rating: rating, date: date, text: text, country: country})
       this.setState({title: '', rating: '', date: '', text: '', country: ''});
@@ -172,6 +182,8 @@ render(){
   )
 }
 
+=======
+>>>>>>> develop
 }
 
 export default EditAndDeleteReview

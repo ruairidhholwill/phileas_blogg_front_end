@@ -11,6 +11,7 @@ import HomeNavBar from "./HomeNavBar"
 import UserBox from "../Users/Containers/UserBox"
 import ReviewBox from "../Reviews/Containers/ReviewBox";
 import Home from "./Home"
+import { Redirect } from 'react-router-dom'
 
 
 class Main extends Component {
@@ -22,8 +23,9 @@ class Main extends Component {
       displayReviews: [],
       topUser: [],
       countries: [],
-      reviewedCountries: []
-     }
+      reviewedCountries: [],
+      redirect: false
+    }
 
     this.postUserData = this.postUserData.bind(this);
     this.postReviewData = this.postReviewData.bind(this);
@@ -34,7 +36,7 @@ class Main extends Component {
     let allUsersURL = "http://localhost:8080/users"
     fetch(allUsersURL)
       .then(res => res.json())
-      .then(userData => this.setState({ users: userData._embedded.users}))
+      .then(userData => this.setState({ users: userData._embedded.users }))
       .catch(err => console.err)
 
     let reviewsUrl = "http://localhost:8080/reviews/all"
@@ -127,6 +129,23 @@ class Main extends Component {
       .then(reviewData => this.setState(prevState => {
         return { reviews: [...prevState.reviews, reviewData] }
       }))
+      .then(this.setRedirect)
+  }
+
+  setRedirect = () => {
+    this.setState({
+      redirect: true
+    })
+  }
+
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      this.setState({
+        redirect: false
+      })
+      return <Redirect to='/reviews' />
+    }
+
   }
 
 
@@ -149,6 +168,7 @@ class Main extends Component {
             <Route path="/users/:id" component={IndividualUserBox} />
             <Route component={ErrorPage} />
           </Switch>
+          {this.renderRedirect()}
         </main>
       </Router>
     )
