@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import UserList from '../Components/UserList.js'
+import UserItem from '../Components/UserItem'
 
 
 class UserBox extends Component {
@@ -9,10 +9,15 @@ class UserBox extends Component {
     }
 
     render() {
+        const userNodes = this.props.topUsers.map((user, index) => {
+            return (
+                <UserItem username={user.username} name={user.name} level={user.level} id={user.id} key={index}/>
+            )
+        });
         return (
             <main>
                 <h2>Top Users:</h2>
-                <UserList topUsers={this.props.topUsers}/>
+                {userNodes}
             </main>
         )
     }
