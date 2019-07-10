@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import IndividualReviewList from '../Components/IndividualReviewList'
+import { Redirect } from 'react-router-dom'
 
 class IndividualReviewBox extends Component {
 
@@ -33,6 +34,7 @@ class IndividualReviewBox extends Component {
         .then(res => res.json())
         .then(this.setState())
         .catch(err => console.err)
+        .then(<Redirect to="/reviews" />)
     }
     
     handleEditSubmit(id, data) {
