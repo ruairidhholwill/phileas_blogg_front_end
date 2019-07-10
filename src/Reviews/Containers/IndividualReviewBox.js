@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import IndividualReviewList from '../Components/IndividualReviewSwitch'
+import IndividualReviewSwitch from '../Components/IndividualReviewSwitch'
 import { Redirect } from 'react-router-dom'
 
 class IndividualReviewBox extends Component {
@@ -67,7 +67,7 @@ class IndividualReviewBox extends Component {
     render() {
         return (
             <div className="review-box">
-                <IndividualReviewList data={this.state.reviewData} handleDelete={this.handleDelete}/>
+                <IndividualReviewSwitch data={this.state.reviewData} handleDelete={this.handleDelete}/>
                 {this.renderRedirect()}
             </div>
         )
