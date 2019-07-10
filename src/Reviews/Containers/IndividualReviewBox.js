@@ -7,7 +7,8 @@ class IndividualReviewBox extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            reviewData: []
+            reviewData: [],
+            redirect: false
         };
 
         this.handleDelete = this.handleDelete.bind(this);
@@ -25,16 +26,27 @@ class IndividualReviewBox extends Component {
     handleDelete(id) {
         let url = `http://localhost:8080/reviews/${id}`
         fetch(url, {
-            method: 'DELETE',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
+            method: 'DELETE'
+        })
+        .then(res => {
+            if (res.ok) {
+                this.setState({ reviewData: [] })
+                this.setRedirect()
             }
         })
-        .then(res => res.json())
-        .then(this.setState())
         .catch(err => console.err)
-        .then(<Redirect to="/reviews" />)
+    }
+
+    setRedirect = () => {
+        this.setState({
+          redirect: true
+        })
+      }
+
+    renderRedirect = () => {
+      if (this.state.redirect) {
+        return <Redirect to='/reviews' />
+        }
     }
     
     handleEditSubmit(id, data) {
@@ -56,6 +68,7 @@ class IndividualReviewBox extends Component {
         return (
             <div className="review-box">
                 <IndividualReviewList data={this.state.reviewData} handleDelete={this.handleDelete}/>
+                {this.renderRedirect()}
             </div>
         )
     }
