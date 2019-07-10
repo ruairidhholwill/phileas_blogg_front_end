@@ -10,7 +10,7 @@ render(){
           <p>Username: {this.props.username}</p>
           <p>Level: {this.props.level}</p>
           <h3>Reviews:</h3>
-          {/* <ReviewBox data={this.props.reviews}/> */}
+          <ReviewBox reviews={this.props.reviews}/>
         </div>
     );
   }
