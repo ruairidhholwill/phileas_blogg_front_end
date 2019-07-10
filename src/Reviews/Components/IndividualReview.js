@@ -24,8 +24,8 @@ class IndividualReview extends Component{
       <Fragment>
       <h4>{this.props.title}</h4>
           <div className="review-content-full">
-            <p class="country">Country: {this.props.country}</p>
-            <p>Text: {this.props.text}</p>
+            <p class="country">{this.props.country}</p>
+            <p>{this.props.text}</p>
             <p>Rating: {this.props.rating}</p>
             <p>Date: {this.props.date}</p>
             <p>Country: {this.props.country}</p>
