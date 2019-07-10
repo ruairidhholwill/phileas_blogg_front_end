@@ -1,10 +1,7 @@
 import React, {Component} from 'react';
 
 class EditAndDeleteReview extends Component{
-<<<<<<< HEAD
 
-=======
->>>>>>> develop
     constructor(props){
         super(props);
         this.state = {

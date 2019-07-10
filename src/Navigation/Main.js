@@ -154,10 +154,10 @@ class Main extends Component {
       <Router>
         <main className="layout">
           <header>
-            <NavBar className="main-nav" handleSearchChange={this.handleSearchChange} />
+            <NavBar className="main-nav"  />
 
           </header>
-          <HomeNavBar className="home-nav" />
+          <HomeNavBar className="home-nav" handleSearchChange={this.handleSearchChange}/>
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/users" component={UserBox} />
