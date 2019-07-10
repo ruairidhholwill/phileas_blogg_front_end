@@ -127,7 +127,7 @@ class Main extends Component {
     })
       .then(res => res.json())
       .then(reviewData => this.setState(prevState => {
-        return { reviews: [...prevState.reviews, reviewData] }
+        return { displayReviews: [...prevState.reviews, reviewData] }
       }))
       .then(this.setRedirect)
   }
