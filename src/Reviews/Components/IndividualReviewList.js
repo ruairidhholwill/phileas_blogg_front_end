@@ -19,56 +19,37 @@ class IndividualReviewList extends Component {
 
   render() {
     if (this.state.mode === 'view') {
-      const review = this.props.data.map((review) => {
-        return (
-
-        <IndividualReview 
-          date={review.date} 
-          rating={review.rating} 
-          title={review.title} 
-          key={review.id} 
-          text={review.text} 
-          country={review.country} 
-          id={review.id} 
+      return (
+        <IndividualReview
+          date={this.props.data.date} 
+          rating={this.props.data.rating} 
+          title={this.props.title} 
+          key={this.props.data.id} 
+          text={this.props.text} 
+          country={this.props.country} 
+          id={this.props.data.id} 
           handleEditMode={this.handleEditMode}
           handleDelete={this.props.handleDelete}
         />
-
-        );
-      })
-
-      return (
-        <div>
-          {review}
-        </div>
-      )
-
+      );
     }
-    else if (this.state.mode === 'edit') {
-      const editReviewForm = this.props.data.map((review) => {
-        return (
-          <EditReviewForm
-              date={review.date} 
-              rating={review.rating} 
-              title={review.title} 
-              key={review.id} 
-              text={review.text} 
-              country={review.country} 
-              id={review.id} 
-              handleEditSubmit={this.props.handleEditSubmit}
-          />
-        )
-      })
-
+  else if (this.state.mode === 'edit') {
       return (
-        <div>
-          {editReviewForm}
-        </div>
+        <EditReviewForm 
+          date={this.props.data.date} 
+          rating={this.props.data.rating} 
+          title={this.props.data.title} 
+          key={this.props.data.id} 
+          text={this.props.data.text} 
+          country={this.props.data.country} 
+          id={this.props.data.id} 
+          handleEditSubmit={this.props.handleEditSubmit}
+        />
       )
-    
-
     }
   }
+
+
 }
 
 
