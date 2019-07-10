@@ -23,6 +23,7 @@ class ReviewForm extends Component{
     this.generateCountryOptions = this.generateCountryOptions.bind(this);
     this.generateUserOptions = this.generateUserOptions.bind(this);
     this.handleUserSelectChange = this.handleUserSelectChange.bind(this);
+    this.setFormattedDate = this.setFormattedDate.bind(this);
     }
 
     handleSubmit(event){
@@ -81,18 +82,20 @@ class ReviewForm extends Component{
     return options
   }
 
+  setFormattedDate() {
+    let monthNames = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"];
+
+    let date = new Date();
+
+
+    let formattedDate = date.getDate() + " " + monthNames[(date.getMonth())] + " " +  date.getFullYear();
+    this.setState({date: formattedDate})
+  }
+
 
 
 render(){
-
-    const monthNames = ["January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"];
-    const date = new Date();
-
-
-    const formattedDate = date.getDate() + " " + monthNames[(date.getMonth())] + " " +  date.getFullYear();
-
-
   return(
     <form className="review-form" onSubmit={this.handleSubmit}>
 
@@ -115,7 +118,7 @@ render(){
           <input type="radio" name="rating" value = '5' />
       </div>
 
-    <input type="hidden"  value={this.state.date = formattedDate} onChange={this.handleDateChange}/>
+    <input type="hidden"  value={this.setFormattedDate} onChange={this.handleDateChange}/>
     <textarea  placeholder="Write review"  value={this.state.text} onChange={this.handleTextChange}></textarea>
     <input type="submit" value="Write Review"/>
     </form>
