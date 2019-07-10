@@ -5,6 +5,7 @@ class EditReviewForm extends Component {
     constructor(props){
         super(props);
         this.state = {
+          id: props.id,
           title: props.title,
           rating: props.rating ,
           date: props.date,
@@ -35,6 +36,7 @@ class EditReviewForm extends Component {
 
     handleSubmit(event){
         event.preventDefault();
+        const id = this.state.id
         const title = this.state.title.trim();
         const rating = this.state.rating;
         const date = this.setFormattedDate()
@@ -45,7 +47,7 @@ class EditReviewForm extends Component {
         return
         }
 
-        this.props.handleEditSubmit(this.props.id, {title: title, rating: rating, date: date, text: text, country: country})
+        this.props.handleEditSubmit(this.state.id, {id: id, title: title, rating: rating, date: date, text: text, country: country})
         this.setState({title: '', rating: '', date: '', text: '', country: ''});
     }
 
@@ -72,7 +74,12 @@ class EditReviewForm extends Component {
 
     generateOptions(){
     const options = this.state.countryNames.map((country, index) => {
-        return <option value={country.name} key={index}>{country.name}</option>
+        // if (country.name === this.props.country) {
+            return <option value={country.name} key={index}>{country.name}</option>
+        // }
+        // else {
+        //     return <option value={country.name} key={index}>{country.name}</option>
+        // }
     })
     return options
     }
@@ -88,12 +95,15 @@ class EditReviewForm extends Component {
     
     
     render(){
+    // debugger;
       return(
+          
         <main className="review-form-main">
+
         <h2>Edit review of {this.props.country}:</h2>
           <form className="review-form" onSubmit={this.handleSubmit}>
             <label id="country-selector">Select country: </label>
-                <select  id="country-selector" value={this.props.country} onChange={this.handleSelectChange}>
+                <select id="country-selector" value={this.state.country} onChange={this.handleSelectChange}>
                 {this.generateOptions()}
                 </select>
           
@@ -109,12 +119,12 @@ class EditReviewForm extends Component {
                     <input type="radio" name="rating" value = '5' />
                 </div>
           
-            <input type="hidden"  value={this.state.date} onChange={this.handleDateChange}/>
+            <input type="hidden"  value={this.state.country} onChange={this.handleDateChange}/>
             
-            <label id="text">Write review: </label>
+            <label id="text">Update review: </label>
                 <textarea id="text" placeholder="Write review" value={this.state.text} onChange={this.handleTextChange}></textarea>
             
-                <input type="submit" value="Write Review"/>
+                <input type="submit" value="Update Review"/>
           </form>
         </main>
     

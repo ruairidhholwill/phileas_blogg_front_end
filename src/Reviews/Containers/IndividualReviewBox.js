@@ -17,7 +17,6 @@ class IndividualReviewBox extends Component {
 
     componentDidMount() {
         let url = `http://localhost:8080/reviews/${this.props.match.params.id}`
-        console.log(`http://localhost:8080/reviews/${this.props.match.params.id}`)
         fetch(url)
             .then(res => res.json())
             .then(review => this.setState({ reviewData: review }))
@@ -69,7 +68,7 @@ class IndividualReviewBox extends Component {
     render() {
         return (
             <div className="review-box">
-                <IndividualReviewList data={this.state.reviewData} handleDelete={this.handleDelete} handleEditSubmit={this.handleEditSubmit}/> */}
+                <IndividualReviewList data={this.state.reviewData} handleDelete={this.handleDelete} handleEditSubmit={this.handleEditSubmit}/>
                 {this.renderRedirect()}
             </div>
         )

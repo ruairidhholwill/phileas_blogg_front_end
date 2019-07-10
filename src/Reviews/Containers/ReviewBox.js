@@ -58,7 +58,7 @@ class ReviewBox extends Component {
           <input id="search-bar" type="input" placeholder="Search.." onChange={this.handleChange}></input>
         </div>
         <main className="review-box">
-          <ReviewList data={this.state.reviews} />
+          <ReviewList data={this.state.reviews}/>
         </main>
       </div>
     )
