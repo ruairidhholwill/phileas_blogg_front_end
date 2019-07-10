@@ -1,13 +1,9 @@
 import React,{Component} from "react";
-// import { Redirect } from 'react-router-dom'
 
 class IndividualReview extends Component{
     
     constructor(props){
-      super(props);
-    //   this.state = {
-    //       redirect: false
-    //   }
+      super(props)
 
       this.handleEditClick = this.handleEditClick.bind(this);
       this.handleDeleteClick = this.handleDeleteClick.bind(this)
@@ -16,21 +12,7 @@ class IndividualReview extends Component{
 
   handleDeleteClick() {
     this.props.handleDelete(this.props.id)
-    // this.setRedirect()
   }
-
-//   setRedirect = () => {
-//     this.setState({
-//       redirect: true
-//     })
-//     this.renderRedirect()
-//   }
-
-//   renderRedirect = () => {
-//     if (this.state.redirect) {
-//       return <Redirect to='/reviews' />
-//     }
-//   }
 
   handleEditClick() {
     this.props.handleEditMode(this.props.id)
