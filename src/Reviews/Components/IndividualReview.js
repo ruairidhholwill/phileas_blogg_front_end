@@ -11,22 +11,22 @@ class IndividualReview extends Component{
 
 
   handleDeleteClick() {
-    this.props.handleDelete(this.data.id)
+    this.props.handleDelete(this.props.id)
   }
 
   handleEditClick() {
-    this.props.handleEditMode(this.data.id)
+    this.props.handleEditMode(this.props.id)
   }
 
   render(){
     return(
         <section className="review-container">
           <div className="review-content">
-            <h4>Title: {this.props.data.title}</h4>
-            <p>Text: {this.props.data.text}</p>
-            <p>Rating: {this.props.data.rating}</p>
-            <p>Date: {this.props.data.date}</p>
-            <p>Country: {this.props.data.country}</p>
+            <h4>Title: {this.props.title}</h4>
+            <p>Text: {this.props.text}</p>
+            <p>Rating: {this.props.rating}</p>
+            <p>Date: {this.props.date}</p>
+            <p>Country: {this.props.country}</p>
           </div>
           <input type="button" value="Delete" onClick={this.handleDeleteClick}></input>
           <input type="button" value="Edit" onClick={this.handleEditClick}></input>

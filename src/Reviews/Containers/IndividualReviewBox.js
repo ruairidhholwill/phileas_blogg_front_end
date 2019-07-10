@@ -21,7 +21,6 @@ class IndividualReviewBox extends Component {
         fetch(url)
             .then(res => res.json())
             .then(review => this.setState({ reviewData: review }))
-            .then(console.log(this.state.reviewData))
             .catch(err => console.err)
 
     }
@@ -70,8 +69,8 @@ class IndividualReviewBox extends Component {
     render() {
         return (
             <div className="review-box">
-                {/* <IndividualReviewList data={this.state.reviewData} handleDelete={this.handleDelete} handleEditSubmit={this.handleEditSubmit}/> */}
-                {/* {this.renderRedirect()} */}
+                <IndividualReviewList data={this.state.reviewData} handleDelete={this.handleDelete} handleEditSubmit={this.handleEditSubmit}/> */}
+                {this.renderRedirect()}
             </div>
         )
     }

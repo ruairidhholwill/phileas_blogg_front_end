@@ -18,15 +18,18 @@ class IndividualReviewList extends Component {
   }
 
   render() {
+
+
     if (this.state.mode === 'view') {
+
       return (
         <IndividualReview
           date={this.props.data.date} 
           rating={this.props.data.rating} 
-          title={this.props.title} 
+          title={this.props.data.title} 
           key={this.props.data.id} 
-          text={this.props.text} 
-          country={this.props.country} 
+          text={this.props.data.text} 
+          country={this.props.data.country} 
           id={this.props.data.id} 
           handleEditMode={this.handleEditMode}
           handleDelete={this.props.handleDelete}
