@@ -28,6 +28,7 @@ class ReviewForm extends Component{
 
     handleSubmit(event){
       event.preventDefault();
+      this.setFormattedDate()
       const title = this.state.title.trim();
       const rating = this.state.rating;
 
@@ -85,8 +86,8 @@ class ReviewForm extends Component{
   setFormattedDate() {
     let monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"];
-
-    let date = new Date();
+    
+      let date = new Date();
 
 
     let formattedDate = date.getDate() + " " + monthNames[(date.getMonth())] + " " +  date.getFullYear();
@@ -118,7 +119,7 @@ render(){
           <input type="radio" name="rating" value = '5' />
       </div>
 
-    <input type="hidden"  value={this.setFormattedDate} onChange={this.handleDateChange}/>
+    <input type="hidden"  value={this.state.date} onChange={this.handleDateChange}/>
     <textarea  placeholder="Write review"  value={this.state.text} onChange={this.handleTextChange}></textarea>
     <input type="submit" value="Write Review"/>
     </form>

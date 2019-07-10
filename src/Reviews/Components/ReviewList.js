@@ -3,6 +3,19 @@ import Review from "./Review";
 import "./ReviewList.css"
 
 class ReviewList extends Component {
+
+  // setFormattedDate(reviewDate) {
+  //   let monthNames = ["January", "February", "March", "April", "May", "June",
+  //   "July", "August", "September", "October", "November", "December"];
+
+  //   let date = new Date();
+
+
+  //   let formattedDate = date.getDate() + " " + monthNames[(date.getMonth())] + " " +  date.getFullYear();
+  //   reviewDate = formattedDate
+  // }
+
+
   render() {
     const reviewNodes = this.props.data.map((review, index) => {
       return (
