@@ -1,18 +1,36 @@
 import React,{Component} from "react";
+// import { Redirect } from 'react-router-dom'
 
 class IndividualReview extends Component{
     
     constructor(props){
-      super(props)
+      super(props);
+    //   this.state = {
+    //       redirect: false
+    //   }
 
       this.handleEditClick = this.handleEditClick.bind(this);
-      this.handleClick = this.handleClick.bind(this)
+      this.handleDeleteClick = this.handleDeleteClick.bind(this)
     }
 
 
-  handleClick() {
+  handleDeleteClick() {
     this.props.handleDelete(this.props.id)
+    // this.setRedirect()
   }
+
+//   setRedirect = () => {
+//     this.setState({
+//       redirect: true
+//     })
+//     this.renderRedirect()
+//   }
+
+//   renderRedirect = () => {
+//     if (this.state.redirect) {
+//       return <Redirect to='/reviews' />
+//     }
+//   }
 
   handleEditClick() {
     this.props.handleEditMode(this.props.id)
@@ -28,7 +46,7 @@ class IndividualReview extends Component{
             <p>Date: {this.props.date}</p>
             <p>Country: {this.props.country}</p>
           </div>
-          <input type="button" value="Delete" onClick={this.handleClick}></input>
+          <input type="button" value="Delete" onClick={this.handleDeleteClick}></input>
           <input type="button" value="Edit" onClick={this.handleEditClick}></input>
         </section>
     );
