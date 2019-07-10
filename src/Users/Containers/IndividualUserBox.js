@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import IndividualUserList from '../Components/IndividualUserList'
+import IndividualUser from '../Components/IndividualUser'
 
 class IndividualUserBox extends Component {
-    
+
     constructor(props) {
         super(props);
         this.state = {
@@ -19,9 +19,14 @@ class IndividualUserBox extends Component {
     }
 
     render() {
+        const user = this.state.user.map((user, index) => {
+            return (
+                <IndividualUser username={user.username} name={user.name} level={user.level} id={user.id} key={index} reviews={user.reviews} />
+            )
+        })
         return (
             <div className="user-box">
-                <IndividualUserList data={this.state.user} />
+                {user}
             </div>
         )
     }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import ReviewList from "../Components/ReviewList";
-import NavBar from "../../Navigation/NavBar";
+import Review from "../Components/Review";
+
 
 
 class ReviewBox extends Component {
@@ -10,12 +10,17 @@ class ReviewBox extends Component {
   }
 
   render() {
+    const reviewNodes = this.props.reviews.map((review, index) => {
+      return (
+        <Review date={review.date} rating={review.rating} title={review.title} key={review.id} value={index} text={review.text} country={review.country} id={review.id} user={review.user}></Review>
+      )
+    })
     return (
       <div>
         <div className="search-bar-wrapper">
         </div>
         <main className="review-box">
-          <ReviewList data={this.props.reviews} />
+          {reviewNodes}
         </main>
       </div>
     )
