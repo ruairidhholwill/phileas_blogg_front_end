@@ -1,4 +1,4 @@
-.review-list{
+.review-box{
   display: grid;
   grid-template-columns: auto auto auto;
   grid-gap: 4vw;

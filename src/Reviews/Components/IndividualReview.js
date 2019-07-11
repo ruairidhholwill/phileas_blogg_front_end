@@ -21,10 +21,11 @@ class IndividualReview extends Component{
 
   render(){
     return(
-      <Fragment>
-      <h4>{this.props.title}</h4>
+      <section>
           <div className="review-content-full">
+            <h4>{this.props.title}</h4>
             <p class="country">{this.props.country}</p>
+            <hr></hr>
             <p>{this.props.text}</p>
             <p>Rating: {this.props.rating}</p>
             <p>Date: {this.props.date}</p>
@@ -35,7 +36,7 @@ class IndividualReview extends Component{
           <input type="button" value="Delete" onClick={this.handleDeleteClick}></input>
           <input type="button" value="Edit" onClick={this.handleEditClick}></input>
         </div>
-    </Fragment>
+    </section>
     );
   }
 
