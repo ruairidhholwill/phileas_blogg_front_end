@@ -10,7 +10,6 @@ import ErrorPage from './ErrorPage'
 import HomeNavBar from "./HomeNavBar"
 import UserBox from "../Users/Containers/UserBox"
 import ReviewBox from "../Reviews/Containers/ReviewBox";
-import Home from "./Home"
 import { Redirect } from 'react-router-dom'
 
 
@@ -174,7 +173,7 @@ class Main extends Component {
           </header>
           <HomeNavBar className="home-nav" handleSearchChange={this.handleSearchChange}/>
           <Switch>
-            <Route exact path="/" component={Home} />
+            <Route exact path="/" render={() => <ReviewBox reviews={this.state.displayReviews} />} />
             <Route exact path="/users" render={() => <UserBox topUsers={this.state.topUsers} /> } />
             <Route exact path="/reviews" render={() => <ReviewBox reviews={this.state.displayReviews} />} />
             <Route path="/add-user" render={() => <UserForm onFormSubmit={this.postUserData} />} />
