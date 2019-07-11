@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Review from "../Components/Review";
-import '../Components/ReviewList.css'
+import './ReviewBox.css'
 
 
 

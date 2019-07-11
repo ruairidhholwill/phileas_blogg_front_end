@@ -15,3 +15,9 @@
 -moz-box-shadow: inset 0px 0px 21px -7px rgba(0,0,0,0.47);
 box-shadow: inset 0px 0px 21px -7px rgba(0,0,0,0.47);
 }
+
+#user-review-box{
+  display: grid;
+  grid-template-columns: auto;
+  grid-gap: 4vw;
+}
